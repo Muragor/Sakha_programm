@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".InfoActivity">
+
+    <TextView
+        android:id="@+id/textView30"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/sansationregular"
+        android:text="Информация, термины и т.д."
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView31"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sansationregular"
+        android:text="ЛИЦО: 1 лицо единственное число - я, 1 лицо множественное число - мы, 2 лицо единственное число - ты, 2 лицо множественное число - вы, 3 лицо единственное число - он. 3 лицо множественное число - они."
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+    <TextView
+        android:id="@+id/textView32"
+        android:layout_width="392dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sansationregular"
+        android:text="НАКЛОНЕНИЯ. Изъявительное наклонение показывается реальное действие, которое уже прошло, проходит или будет происходить. Пример: он съел, он ест, он съест. Повелительное наклонение просит или требует этого действия. Пример: принеси, пусть уйдёт, усни."
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+    <TextView
+        android:id="@+id/textView33"
+        android:layout_width="382dp"
+        android:layout_height="314dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/sansationregular"
+        android:text="Имена существительные со значением деятеля, т.е. имя существительное, которое либо является мастером этого дела (дело - основа), либо тем предметом, которое обычно делает действие, связанное с основой. Пример: балык - рыба, балыксыт - рыбак; суол - следы, суолдьут - следопыт. Глаголы чувственного восприятия. Пример: күүс - сила, күүһүргээ= чувствовать себя сильным. Люди или животные, имеющие пристрастие к тому, что выражает основа. Пример: хаан - кровь, хаанымсах - жаждущий крови; оҕо - ребёнок, оҕомсох 'любящий детей'"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView32" />
+
+    <ImageView
+        android:id="@+id/imageView13"
+        android:layout_width="153dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.943"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/rectangle_5_1" />
+
+    <TextView
+        android:id="@+id/textView34"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Следующая страница"
+        android:textColor="@color/black"
+        android:fontFamily="@font/sansationregular"
+        app:layout_constraintBottom_toBottomOf="@+id/imageView13"
+        app:layout_constraintEnd_toEndOf="@+id/imageView13"
+        app:layout_constraintStart_toStartOf="@+id/imageView13"
+        app:layout_constraintTop_toTopOf="@+id/imageView13" />
+</androidx.constraintlayout.widget.ConstraintLayout>
