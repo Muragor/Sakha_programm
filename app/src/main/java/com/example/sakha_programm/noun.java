@@ -37,6 +37,12 @@ public class noun extends AppCompatActivity implements View.OnTouchListener{
     ImageView r17;
     ImageView r18;
 
+    ImageView imagebkb1;
+    ImageView imagebkb2;
+    ImageView imagebkb3;
+    ImageView imagebkb4;
+    ImageView imagebkb5;
+
     TextView txt1;
     TextView txt2;
     TextView txt3;
@@ -89,6 +95,18 @@ public class noun extends AppCompatActivity implements View.OnTouchListener{
         r16= (ImageView) findViewById(R.id.rectangle_22);
         r17= (ImageView) findViewById(R.id.rectangle_23);
         r18= (ImageView) findViewById(R.id.rectangle_24);
+
+        imagebkb1 = (ImageView) findViewById(R.id.imagebkb10);
+        imagebkb2 = (ImageView) findViewById(R.id.imagebkb11);
+        imagebkb3 = (ImageView) findViewById(R.id.imagebkb12);
+        imagebkb4 = (ImageView) findViewById(R.id.imagebkb13);
+        imagebkb5 = (ImageView) findViewById(R.id.imagebkb14);
+
+        imagebkb1.setOnTouchListener(this);
+        imagebkb2.setOnTouchListener(this);
+        imagebkb3.setOnTouchListener(this);
+        imagebkb4.setOnTouchListener(this);
+        imagebkb5.setOnTouchListener(this);
 
         txt1= (TextView) findViewById(R.id.textView10);
         txt2= (TextView) findViewById(R.id.textView11);
@@ -174,7 +192,22 @@ public class noun extends AppCompatActivity implements View.OnTouchListener{
                 txt18.setText(noun.Srav_p(noun.plural(noun1, count), face, count));
                 Toast.makeText(this, "Просклонено", Toast.LENGTH_SHORT).show();
                 break;
-        }
+
+        case R.id.imagebkb10:
+            textnoun.setText(noun1+"һ");
+            break;
+        case R.id.imagebkb11:
+            textnoun.setText(noun1+"ҕ");
+            break;
+        case R.id.imagebkb12:
+            textnoun.setText(noun1+"ө");
+            break;
+        case R.id.imagebkb13:
+            textnoun.setText(noun1+"ү");
+            break;
+        case R.id.imagebkb14:
+            textnoun.setText(noun1+"ҥ");
+            break; }
         return false;
     }
     protected Dialog onCreateDialog(int id) {

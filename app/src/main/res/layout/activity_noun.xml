@@ -8,6 +8,56 @@
     tools:context=".noun">
 
     <ImageView
+        android:id="@+id/imagebkb10"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/some_id"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_bkb" />
+
+    <ImageView
+        android:id="@+id/imagebkb11"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/imagebkb10"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_bkb" />
+
+    <ImageView
+        android:id="@+id/imagebkb12"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/imagebkb11"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_bkb" />
+
+    <ImageView
+        android:id="@+id/imagebkb13"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/imagebkb12"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_bkb" />
+
+    <ImageView
+        android:id="@+id/imagebkb14"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/imagebkb13"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_bkb" />
+
+    <ImageView
         android:id="@+id/btn_noune"
         android:layout_width="159dp"
         android:layout_height="wrap_content"
@@ -19,8 +69,8 @@
 
     <TextView
         android:id="@+id/some_id"
-        android:layout_width="147dp"
-        android:layout_height="45dp"
+        android:layout_width="173dp"
+        android:layout_height="wrap_content"
         android:fontFamily="@font/sansationregular"
         android:gravity="top"
         android:text="Введите ваше имя существительное:"
@@ -48,11 +98,11 @@
         android:id="@+id/rectangle_5"
         android:layout_width="130dp"
         android:layout_height="18dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="52dp"
         android:layout_marginEnd="28dp"
         android:background="@drawable/rectanagle_5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/some_id"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -60,11 +110,11 @@
         android:id="@+id/rectangle_"
         android:layout_width="130dp"
         android:layout_height="18dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="28dp"
         android:background="@drawable/rectanagle_5"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/some_id"
         app:layout_constraintTop_toBottomOf="@+id/rectangle_5" />
 
@@ -469,4 +519,59 @@
         app:layout_constraintEnd_toStartOf="@+id/rectangle_19"
         app:layout_constraintStart_toStartOf="@+id/rectangle_7"
         app:layout_constraintTop_toBottomOf="@+id/rectangle_6" />
+
+    <TextView
+        android:id="@+id/textView55"
+        android:layout_width="8dp"
+        android:layout_height="14dp"
+        android:text="h"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imagebkb10"
+        app:layout_constraintEnd_toEndOf="@+id/imagebkb10"
+        app:layout_constraintStart_toStartOf="@+id/imagebkb10"
+        app:layout_constraintTop_toTopOf="@+id/imagebkb10" />
+
+    <TextView
+        android:id="@+id/textView56"
+        android:layout_width="8dp"
+        android:layout_height="wrap_content"
+        android:text="ө"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imagebkb12"
+        app:layout_constraintEnd_toEndOf="@+id/imagebkb12"
+        app:layout_constraintStart_toStartOf="@+id/imagebkb12"
+        app:layout_constraintTop_toTopOf="@+id/imagebkb12" />
+
+    <TextView
+        android:id="@+id/textView57"
+        android:layout_width="8dp"
+        android:layout_height="wrap_content"
+        android:text="ҕ"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imagebkb11"
+        app:layout_constraintEnd_toEndOf="@+id/imagebkb11"
+        app:layout_constraintStart_toStartOf="@+id/imagebkb11"
+        app:layout_constraintTop_toTopOf="@+id/imagebkb11" />
+
+    <TextView
+        android:id="@+id/textView58"
+        android:layout_width="8dp"
+        android:layout_height="wrap_content"
+        android:text="ү"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imagebkb13"
+        app:layout_constraintEnd_toEndOf="@+id/imagebkb13"
+        app:layout_constraintStart_toStartOf="@+id/imagebkb13"
+        app:layout_constraintTop_toTopOf="@+id/imagebkb13" />
+
+    <TextView
+        android:id="@+id/textView59"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:text="ҥ"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imagebkb14"
+        app:layout_constraintEnd_toEndOf="@+id/imagebkb14"
+        app:layout_constraintStart_toStartOf="@+id/imagebkb14"
+        app:layout_constraintTop_toTopOf="@+id/imagebkb14" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -57,6 +57,12 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
     TextView text11;
     TextView text12;
     EditText textverb;
+
+    ImageView imagebkb1;
+    ImageView imagebkb2;
+    ImageView imagebkb3;
+    ImageView imagebkb4;
+    ImageView imagebkb5;
     final int DIALOG_TIME = 1;
     final int DIALOG_MOOD = 2;
     final int DIALOG_TIME_1 = 3;
@@ -87,6 +93,17 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
         rect11 = (ImageView) findViewById(R.id.imageView9);
         rect12 = (ImageView) findViewById(R.id.imageView12);
         mood = (ImageView) findViewById(R.id.mood);
+
+        imagebkb1 = (ImageView) findViewById(R.id.imagebkb);
+        imagebkb2 = (ImageView) findViewById(R.id.imagebkb6);
+        imagebkb3 = (ImageView) findViewById(R.id.imagebkb7);
+        imagebkb4 = (ImageView) findViewById(R.id.imagebkb8);
+        imagebkb5 = (ImageView) findViewById(R.id.imagebkb9);
+        imagebkb1.setOnTouchListener(this);
+        imagebkb2.setOnTouchListener(this);
+        imagebkb3.setOnTouchListener(this);
+        imagebkb4.setOnTouchListener(this);
+        imagebkb5.setOnTouchListener(this);
 
         text1 = (TextView) findViewById(R.id.textView10);
         text2 = (TextView) findViewById(R.id.textView11);
@@ -256,6 +273,21 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
             break;
             case R.id.mood:
                 showDialog(DIALOG_MOOD);
+                break;
+            case R.id.imagebkb:
+                textverb.setText(verb1+"һ");
+                break;
+            case R.id.imagebkb6:
+                textverb.setText(verb1+"ҕ");
+                break;
+            case R.id.imagebkb7:
+                textverb.setText(verb1+"ө");
+                break;
+            case R.id.imagebkb8:
+                textverb.setText(verb1+"ү");
+                break;
+            case R.id.imagebkb9:
+                textverb.setText(verb1+"ҥ");
                 break;
         }
         return false;

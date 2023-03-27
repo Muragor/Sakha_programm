@@ -31,6 +31,11 @@ public class Word_activity extends AppCompatActivity implements View.OnTouchList
     ImageView rectangle_chast_r1;
     ImageView rectangle_chast_r2;
     ImageView word_start;
+    ImageView imagebkb1;
+    ImageView imagebkb2;
+    ImageView imagebkb3;
+    ImageView imagebkb4;
+    ImageView imagebkb5;
     @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,16 @@ public class Word_activity extends AppCompatActivity implements View.OnTouchList
         rectangle_chast_r1.setOnTouchListener(this);
         rectangle_chast_r2.setOnTouchListener(this);
         word_start.setOnTouchListener(this);
+        imagebkb1 = (ImageView) findViewById(R.id.imagebkb1);
+        imagebkb2 = (ImageView) findViewById(R.id.imagebkb2);
+        imagebkb3 = (ImageView) findViewById(R.id.imagebkb3);
+        imagebkb4 = (ImageView) findViewById(R.id.imagebkb4);
+        imagebkb5 = (ImageView) findViewById(R.id.imagebkb5);
+        imagebkb1.setOnTouchListener(this);
+        imagebkb2.setOnTouchListener(this);
+        imagebkb3.setOnTouchListener(this);
+        imagebkb4.setOnTouchListener(this);
+        imagebkb5.setOnTouchListener(this);
     }
 
     @SuppressLint("NonConstantResourceId")
@@ -69,6 +84,21 @@ public class Word_activity extends AppCompatActivity implements View.OnTouchList
                 editText2.setText(word.word_finally(w2, word1));
                 Toast.makeText(this, "Просклонено", Toast.LENGTH_SHORT).show();
                 break;
+            case R.id.imagebkb1:
+                editText1.setText(word1+"һ");
+                break;
+            case R.id.imagebkb2:
+                editText1.setText(word1+"ҕ");
+                break;
+            case R.id.imagebkb3:
+                editText1.setText(word1+"ө");
+                break;
+            case R.id.imagebkb4:
+                editText1.setText(word1+"ү");
+                break;
+            case R.id.imagebkb5:
+                editText1.setText(word1+"ҥ");
+                break;
         }
         return false;
     }
@@ -79,17 +109,19 @@ public class Word_activity extends AppCompatActivity implements View.OnTouchList
             case DIALOG_1:
                 adb.setTitle("Из какой части речи?");
                 adb.setSingleChoiceItems(data, -1, myClickListener);
+                adb.setPositiveButton("OK", myClickListener);
                 break;
             case DIALOG_2:
                 adb.setTitle("В какую часть речи?");
                 adb.setSingleChoiceItems(data1, -1, myClickListener1);
+                adb.setPositiveButton("OK", myClickListener1);
                 break;
             case DIALOG_3:
                 adb.setTitle("В какую часть речи?");
                 adb.setSingleChoiceItems(data2, -1, myClickListener2);
+                adb.setPositiveButton("OK", myClickListener2);
                 break;
         }
-        adb.setPositiveButton("OK", myClickListener);
         return adb.create();
     }
     DialogInterface.OnClickListener myClickListener = new DialogInterface.OnClickListener() {

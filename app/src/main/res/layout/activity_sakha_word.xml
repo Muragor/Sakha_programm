@@ -7,6 +7,46 @@
     android:background="@color/white"
     tools:context=".Word_activity">
 
+    <ImageView
+        android:id="@+id/imagebkb3"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/imagebkb2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_bkb" />
+
+    <ImageView
+        android:id="@+id/imagebkb4"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/imagebkb3"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_bkb" />
+
+    <ImageView
+        android:id="@+id/imagebkb5"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/imagebkb4"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_bkb" />
+
+    <ImageView
+        android:id="@+id/imagebkb2"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/imagebkb1"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_bkb" />
+
     <TextView
         android:id="@+id/some_id"
         android:layout_width="wrap_content"
@@ -129,5 +169,70 @@
         app:layout_constraintHorizontal_bias="0.575"
         app:layout_constraintStart_toStartOf="@+id/word_start"
         app:layout_constraintTop_toTopOf="@+id/word_start" />
+
+    <ImageView
+        android:id="@+id/imagebkb1"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="16dp"
+        app:layout_constraintStart_toEndOf="@+id/some_id"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/rectangle_bkb" />
+
+    <TextView
+        android:id="@+id/textView35"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="һ"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imagebkb1"
+        app:layout_constraintEnd_toEndOf="@+id/imagebkb1"
+        app:layout_constraintStart_toStartOf="@+id/imagebkb1"
+        app:layout_constraintTop_toTopOf="@+id/imagebkb1" />
+
+    <TextView
+        android:id="@+id/textView41"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ҕ"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imagebkb2"
+        app:layout_constraintEnd_toEndOf="@+id/imagebkb2"
+        app:layout_constraintStart_toStartOf="@+id/imagebkb2"
+        app:layout_constraintTop_toTopOf="@+id/imagebkb2" />
+
+    <TextView
+        android:id="@+id/textView42"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ө"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imagebkb3"
+        app:layout_constraintEnd_toEndOf="@+id/imagebkb3"
+        app:layout_constraintStart_toStartOf="@+id/imagebkb3"
+        app:layout_constraintTop_toTopOf="@+id/imagebkb3" />
+
+    <TextView
+        android:id="@+id/textView43"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ү"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imagebkb4"
+        app:layout_constraintEnd_toEndOf="@+id/imagebkb4"
+        app:layout_constraintStart_toStartOf="@+id/imagebkb4"
+        app:layout_constraintTop_toTopOf="@+id/imagebkb4" />
+
+    <TextView
+        android:id="@+id/textView44"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ҥ"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="@+id/imagebkb5"
+        app:layout_constraintEnd_toEndOf="@+id/imagebkb5"
+        app:layout_constraintStart_toStartOf="@+id/imagebkb5"
+        app:layout_constraintTop_toTopOf="@+id/imagebkb5" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

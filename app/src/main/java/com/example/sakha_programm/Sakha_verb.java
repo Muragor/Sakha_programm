@@ -69,7 +69,9 @@ public class Sakha_verb
         if (len < 3) return v;
         String[] arr1 = {"р", "й", "л"};
         String[] arr2 = {"ҥ", "н", "м"};
-        if (v.toLowerCase().equals("ыарый")) return "ыалдь";
+        if (v.toLowerCase().equals("илт")) return "илдь";
+        else if (v.charAt(len-1) == 'т' && v.charAt(len-2) == 'р') return v.substring(0, v.length()-1)+ "д";
+        else if (v.toLowerCase().equals("ыарый")) return "ыалдь";
         else if (v.toLowerCase().equals("сырыт")) {return "сылдь";}
         else if (v.toLowerCase().equals("уһул")) {return "уст";}
         else if (v.charAt(len-1) == 'с' && This_el(glass_usk, Character.toString(v.charAt(len-2))) && This_el(arr1, Character.toString(v.charAt(len-3))))
@@ -287,7 +289,11 @@ public class Sakha_verb
     public String past_time(String v, int a, int b) {
         v = v.toLowerCase();
         int len = v.length();
-        if (!check_for_irregular_verbs(v).equals(v))
+        if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
+        {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+        else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
+        {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+        else if (!check_for_irregular_verbs(v).equals(v))
             v = check_for_irregular_verbs(v)+v.charAt(len-2);
         int c = -1;
         for (int i = 1; i < v.length()+1; i++) {
@@ -307,8 +313,12 @@ public class Sakha_verb
     public String minus_past_time(String v, int a, int b) {
         v = v.toLowerCase();
         int len = v.length();
-        if (!check_for_irregular_verbs(v).equals(v))
-            v = check_for_irregular_verbs(v)+v.charAt(len-2);
+        if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
+        {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+        else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
+        {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+        else if (!check_for_irregular_verbs(v).equals(v)) {
+            v = check_for_irregular_verbs(v)+v.charAt(len-2);}
         String g1 = dict2[Garmony(v)];
         String afficks = "б" + g1 + "т" + g1 + "х";
         v = upod_sogl_of_verb_and_verb_time(v, v+afficks);
@@ -343,7 +353,7 @@ public class Sakha_verb
         else {
             if (b==1) return face(v_deep, a, b);
             if (b==2) return upod_sogl_of_verb_time_and_lic(v_deep, face(v_deep, a, b));
-            else return v_deep + "лл" + dict2[Garmony(v_deep)]+ "р";
+            else return v_deep + "лл" + dict2[Garmony_of_sl(Character.toString(v_deep.charAt(v_deep.length()-1)), 1)]+ "р";
         }
 
     }
@@ -351,8 +361,12 @@ public class Sakha_verb
     public String minus_real_time(String v, int a, int b) {
         v = v.toLowerCase();
         int len = v.length();
-        if (!check_for_irregular_verbs(v).equals(v))
-            v = check_for_irregular_verbs(v)+v.charAt(len-2);
+        if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
+        {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+        else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
+        {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+        else if (!check_for_irregular_verbs(v).equals(v)) {
+            v = check_for_irregular_verbs(v)+v.charAt(len-2);}
         String c1 = dict2[Garmony(v)];
         String c2 = dict1[Garmony_of_sl(c1, 1)];
         String afficks = "б" + c1 + "т";
@@ -442,7 +456,11 @@ public class Sakha_verb
     }
 
     public String verb_recent_time(String v, int a, int b) {
-        v = upod_sogl_of_verb_and_verb_time(v, v+'т');
+        if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
+            v = v;
+        else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
+            v = v;
+        else v = upod_sogl_of_verb_and_verb_time(v, v+'т');
         if (a==1) return face(v, a , b);
 
         String c = dict1[Garmony(v)];
@@ -458,8 +476,12 @@ public class Sakha_verb
     public String minus_verb_recent_time(String v, int a, int b) {
         v = v.toLowerCase();
         int len = v.length();
-        if (!check_for_irregular_verbs(v).equals(v))
-            v = check_for_irregular_verbs(v)+v.charAt(len-2);
+        if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
+        {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+        else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
+        {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+        else if (!check_for_irregular_verbs(v).equals(v)) {
+            v = check_for_irregular_verbs(v)+v.charAt(len-2); }
         String c1 = dict2[Garmony(v)];
         String c2 = dict1[Garmony_of_sl(c1, 1)];
         String afficks = "б" + c1 + "т";
