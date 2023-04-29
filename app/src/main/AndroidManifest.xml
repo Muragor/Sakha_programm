@@ -29,6 +29,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Verb_activity"
+
             android:exported="false"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

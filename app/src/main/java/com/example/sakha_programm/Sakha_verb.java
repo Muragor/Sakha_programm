@@ -9,6 +9,9 @@ public class Sakha_verb
 
     public String[] glass_usk = {"и", "ы", "у", "ү"};
     public String[] glass_shir = {"э", "а", "о",  "ө"};
+
+    public String[] glass_pered = {"а", "ы", "о", "у", "ё", "я", "ю"};
+    public String[] glass_zad = {"е", "и", "э"};
     public boolean This_el(String[] arr, String toCheckValue) {
         for (String element : arr) {
             if (element.equals(toCheckValue)) {
@@ -16,6 +19,22 @@ public class Sakha_verb
             }
         }
         return false;
+    }
+
+
+    public String[] Chert_word(String word){
+        String[] s1 = new String[2];
+        int i = 0;
+        while (i < word.length()) {
+            if (word.charAt(i) == '-') {
+                s1[0] = word.substring(0, i);
+                break;
+            }
+            s1[1]=word.substring(i+2);
+            i++;
+
+        }
+        return s1;
     }
     public int Garmony_of_sl(String v, int n)
     {
@@ -289,30 +308,75 @@ public class Sakha_verb
     public String past_time(String v, int a, int b) {
         v = v.toLowerCase();
         int len = v.length();
-        if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
-        {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
-        else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
-        {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
-        else if (!check_for_irregular_verbs(v).equals(v))
-            v = check_for_irregular_verbs(v)+v.charAt(len-2);
-        int c = -1;
-        for (int i = 1; i < v.length()+1; i++) {
-            String s = Character.toString(v.charAt(len-i));
-            if (This_el(glass_letters, Character.toString(v.charAt(len-i)))) {
-                c = Garmony_of_sl(s, 1);
-                break; }
+        if (v.contains("-")) {
+
+            String v1 = Chert_word(v)[0];
+            String v2 = Chert_word(v)[1];
+            if (!v1.equals(check_for_irregular_verbs(v1))){
+                v1 = check_for_irregular_verbs(v1) + v1.charAt(v1.length()-2);}
+            if (!v2.equals(check_for_irregular_verbs(v2))){
+                v2 = check_for_irregular_verbs(v2) + v2.charAt(v2.length()-2);}
+
+
+            int len1 = v1.length();
+
+
+            int c = -1;
+            for (int i = 1; i < v.length()+1; i++) {
+                String s = Character.toString(v.charAt(len-i));
+                if (This_el(glass_letters, Character.toString(v.charAt(len-i)))) {
+                    c = Garmony_of_sl(s, 1);
+                    break; }
+            }
+            int c1 = -1;
+            for (int i = 1; i < v1.length()+1; i++) {
+                String s = Character.toString(v1.charAt(len1-i));
+                if (This_el(glass_letters, Character.toString(v1.charAt(len1-i)))) {
+                    c1 = Garmony_of_sl(s, 1);
+                    break; }
+            }
+            String g = dict1[c];
+            String g1 = dict1[c1];
+
+            String v_past1 = v1 + "б" + g1 + "т";
+            String v_time1 = upod_sogl_of_verb_and_verb_time(v1, v_past1);
+            String v_lico1 = face(v_time1, a, b);
+
+            String v_past2 = v2 + "б" + g + "т";
+            String v_time2 = upod_sogl_of_verb_and_verb_time(v2, v_past2);
+            String v_lico2 = face(v_time2, a, b);
+            return upod_sogl_of_verb_time_and_lic(v_time1, v_lico1)+"-"+upod_sogl_of_verb_time_and_lic(v_time2, v_lico2);
         }
-        String g = dict1[c];
+
+        else {
+            if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
+            {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+            else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
+            {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+            else if (!check_for_irregular_verbs(v).equals(v))
+                v = check_for_irregular_verbs(v)+v.charAt(len-2);
+            int c = -1;
+            for (int i = 1; i < v.length()+1; i++) {
+                String s = Character.toString(v.charAt(len-i));
+                if (This_el(glass_letters, Character.toString(v.charAt(len-i)))) {
+                    c = Garmony_of_sl(s, 1);
+                    break; }
+            }
+            String g = dict1[c];
         String v_past = v + "б" + g + "т";
         String v_time = upod_sogl_of_verb_and_verb_time(v, v_past);
         String v_lico = face(v_time, a, b);
-        return upod_sogl_of_verb_time_and_lic(v_time, v_lico);
+        return upod_sogl_of_verb_time_and_lic(v_time, v_lico); }
 
     }
 
     public String minus_past_time(String v, int a, int b) {
         v = v.toLowerCase();
         int len = v.length();
+        if (v.contains("-")) {
+
+        }
+        else {
         if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
         {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
         else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
@@ -323,7 +387,10 @@ public class Sakha_verb
         String afficks = "б" + g1 + "т" + g1 + "х";
         v = upod_sogl_of_verb_and_verb_time(v, v+afficks);
         if (a==1) return upod_sogl_of_verb_and_verb_time(v , face(v, a, b));
-        else return upod_sogl_of_verb_time_and_lic(v , face(v, a, b));
+        else return upod_sogl_of_verb_time_and_lic(v , face(v, a, b)); }
+
+
+        return v;
     }
     public String real_time(String v, int a, int b) {
         v = v.toLowerCase();
