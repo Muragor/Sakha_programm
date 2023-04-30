@@ -221,6 +221,9 @@ public class Sakha_verb
         else if (!upod_sogl_sl(v, 'н', v_time, 'т', "н").equals("?")) {
             return upod_sogl_sl(v, 'н', v_time, 'т', "н");
         }
+        else if (!upod_sogl_sl(v, 'ҥ', v_time, 'т', "н").equals("?")) {
+            return upod_sogl_sl(v, 'ҥ', v_time, 'т', "н");
+        }
 
         //гласные с согалсными
         char c2 = c3.charAt(0);

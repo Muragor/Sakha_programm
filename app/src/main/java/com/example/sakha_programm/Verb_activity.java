@@ -69,8 +69,10 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
     final int DIALOG_TIME_MUST_VERB_1 = 4;
 
     final int DIALOG_TIME_PR_SUB_VERB = 5;
+    final int DIALOG_TIME_CONDITIONAL = 6;
     String data[] = { "Будущее время", "Прошедшее время", "Настоящее время", "Недавнопрошедшее время","Отрицательное будущее  время", "Отрицательное прошедшее время", "Отрицательное настоящее время", "Отрицательное недавнопрошедшее время", "Настоящее время еще не совершившегося действия"};
-    String data1[] = {"Изъявительное наклонение", "Повелительное наклонение", "Долженствовательное наклонение", "Желательно-сослагательное наклонение"};
+    String data1[] = {"Изъявительное наклонение", "Повелительное наклонение", "Долженствовательное наклонение", "Желательно-сослагательное наклонение", "Условное наклонение"};
+    String data_conditional[] = {"Вневременная форма", "Отрицательная вневременная форма", "Настоящее время", "Отрицательное настоящее время", "Прошедшее время", "Отрицательное прошедшее время"};
     String data_must_verb_1[] = {"Положительная форма", "Отрицательная форма"};
     String data2[] = {"Будущее время", "Настоящее время", "Отрицательное будущее время", "Отрицательное настоящее время" };
     int time = 2;
@@ -144,6 +146,9 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
                 }
                 if (mood1 == 3) {
                     showDialog(DIALOG_TIME_PR_SUB_VERB);
+                }
+                if (mood1 == 4) {
+                    showDialog(DIALOG_TIME_CONDITIONAL);
                 }
                 break;
             case R.id.Btn_verb:
@@ -313,6 +318,59 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
                         text12.setText(verb_pr.Pr_a_sub_verb_minus(verb1, 2, 3));
                     }
                 }
+                if (mood1 == 4) {
+                    Conditional_verb verb_cond = new Conditional_verb();
+                    switch (time) {
+                        case 0:
+                            text6.setText(verb_cond.not_in_time(verb1, 1, 1, 0));
+                            text7.setText(verb_cond.not_in_time(verb1, 1, 2, 0));
+                            text8.setText(verb_cond.not_in_time(verb1, 1, 3, 0));
+                            text10.setText(verb_cond.not_in_time(verb1, 2, 1, 0));
+                            text11.setText(verb_cond.not_in_time(verb1, 2, 2, 0));
+                            text12.setText(verb_cond.not_in_time(verb1, 2, 3, 0));
+                            break;
+                        case 1:
+                            text6.setText(verb_cond.not_in_time(verb1, 1, 1, 1));
+                            text7.setText(verb_cond.not_in_time(verb1, 1, 2, 1));
+                            text8.setText(verb_cond.not_in_time(verb1, 1, 3, 1));
+                            text10.setText(verb_cond.not_in_time(verb1, 2, 1, 1));
+                            text11.setText(verb_cond.not_in_time(verb1, 2, 2, 1));
+                            text12.setText(verb_cond.not_in_time(verb1, 2, 3, 1));
+                            break;
+                        case 2:
+                            text6.setText(verb_cond.real_time_conditional(verb1, 1, 1, 0));
+                            text7.setText(verb_cond.real_time_conditional(verb1, 1, 2, 0));
+                            text8.setText(verb_cond.real_time_conditional(verb1, 1, 3, 0));
+                            text10.setText(verb_cond.real_time_conditional(verb1, 2, 1, 0));
+                            text11.setText(verb_cond.real_time_conditional(verb1, 2, 2, 0));
+                            text12.setText(verb_cond.real_time_conditional(verb1, 2, 3, 0));
+                            break;
+                        case 3:
+                            text6.setText(verb_cond.real_time_conditional(verb1, 1, 1, 1));
+                            text7.setText(verb_cond.real_time_conditional(verb1, 1, 2, 1));
+                            text8.setText(verb_cond.real_time_conditional(verb1, 1, 3, 1));
+                            text10.setText(verb_cond.real_time_conditional(verb1, 2, 1, 1));
+                            text11.setText(verb_cond.real_time_conditional(verb1, 2, 2, 1));
+                            text12.setText(verb_cond.real_time_conditional(verb1, 2, 3, 1));
+                            break;
+                        case 4:
+                            text6.setText(verb_cond.past_time_conditional(verb1, 1, 1, 0));
+                            text7.setText(verb_cond.past_time_conditional(verb1, 1, 2, 0));
+                            text8.setText(verb_cond.past_time_conditional(verb1, 1, 3, 0));
+                            text10.setText(verb_cond.past_time_conditional(verb1, 2, 1, 0));
+                            text11.setText(verb_cond.past_time_conditional(verb1, 2, 2, 0));
+                            text12.setText(verb_cond.past_time_conditional(verb1, 2, 3, 0));
+                            break;
+                        case 5:
+                            text6.setText(verb_cond.past_time_conditional(verb1, 1, 1, 1));
+                            text7.setText(verb_cond.past_time_conditional(verb1, 1, 2, 1));
+                            text8.setText(verb_cond.past_time_conditional(verb1, 1, 3, 1));
+                            text10.setText(verb_cond.past_time_conditional(verb1, 2, 1, 1));
+                            text11.setText(verb_cond.past_time_conditional(verb1, 2, 2, 1));
+                            text12.setText(verb_cond.past_time_conditional(verb1, 2, 3, 1));
+                            break;
+                    }
+                }
                 Toast.makeText(this, "Просклонено", Toast.LENGTH_SHORT).show();
 
             break;
@@ -361,6 +419,10 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
             case DIALOG_TIME_PR_SUB_VERB:
                 adb.setTitle("время");
                 adb.setSingleChoiceItems(data_must_verb_1, -1, myClickListener);
+                break;
+            case DIALOG_TIME_CONDITIONAL:
+                adb.setTitle("время");
+                adb.setSingleChoiceItems(data_conditional, -1, myClickListener);
                 break;
         }
 
