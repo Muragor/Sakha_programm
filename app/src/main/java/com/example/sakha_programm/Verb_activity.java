@@ -67,8 +67,10 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
     final int DIALOG_MOOD = 2;
     final int DIALOG_TIME_1 = 3;
     final int DIALOG_TIME_MUST_VERB_1 = 4;
+
+    final int DIALOG_TIME_PR_SUB_VERB = 5;
     String data[] = { "Будущее время", "Прошедшее время", "Настоящее время", "Недавнопрошедшее время","Отрицательное будущее  время", "Отрицательное прошедшее время", "Отрицательное настоящее время", "Отрицательное недавнопрошедшее время", "Настоящее время еще не совершившегося действия"};
-    String data1[] = {"Изъявительное наклонение", "Повелительное наклонение", "ДОЛЖЕНСТВОВАТЕЛЬНОЕ НАКЛОНЕНИЕ I"};
+    String data1[] = {"Изъявительное наклонение", "Повелительное наклонение", "Долженствовательное наклонение", "Желательно-сослагательное наклонение"};
     String data_must_verb_1[] = {"Положительная форма", "Отрицательная форма"};
     String data2[] = {"Будущее время", "Настоящее время", "Отрицательное будущее время", "Отрицательное настоящее время" };
     int time = 2;
@@ -139,6 +141,9 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
                     showDialog(DIALOG_TIME_1); }
                 if (mood1 == 2) {
                     showDialog(DIALOG_TIME_MUST_VERB_1);
+                }
+                if (mood1 == 3) {
+                    showDialog(DIALOG_TIME_PR_SUB_VERB);
                 }
                 break;
             case R.id.Btn_verb:
@@ -290,6 +295,24 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
                     text12.setText(verb_must_1.must_verb_minus(verb1, 2, 3));
                     }
                 }
+                if (mood1 == 3) {
+                    Preferably_a_subjunctive_verb verb_pr = new Preferably_a_subjunctive_verb();
+                    if (time==0) {
+                        text6.setText(verb_pr.Pr_a_sub_verb(verb1, 1, 1));
+                        text7.setText(verb_pr.Pr_a_sub_verb(verb1, 1, 2));
+                        text8.setText(verb_pr.Pr_a_sub_verb(verb1, 1, 3));
+                        text10.setText(verb_pr.Pr_a_sub_verb(verb1, 2, 1));
+                        text11.setText(verb_pr.Pr_a_sub_verb(verb1, 2, 2));
+                        text12.setText(verb_pr.Pr_a_sub_verb(verb1, 2, 3)); }
+                    else {
+                        text6.setText(verb_pr.Pr_a_sub_verb_minus(verb1, 1, 1));
+                        text7.setText(verb_pr.Pr_a_sub_verb_minus(verb1, 1, 2));
+                        text8.setText(verb_pr.Pr_a_sub_verb_minus(verb1, 1, 3));
+                        text10.setText(verb_pr.Pr_a_sub_verb_minus(verb1, 2, 1));
+                        text11.setText(verb_pr.Pr_a_sub_verb_minus(verb1, 2, 2));
+                        text12.setText(verb_pr.Pr_a_sub_verb_minus(verb1, 2, 3));
+                    }
+                }
                 Toast.makeText(this, "Просклонено", Toast.LENGTH_SHORT).show();
 
             break;
@@ -332,6 +355,10 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
                 adb.setSingleChoiceItems(data2, -1, myClickListener);
                 break;
             case DIALOG_TIME_MUST_VERB_1:
+                adb.setTitle("время");
+                adb.setSingleChoiceItems(data_must_verb_1, -1, myClickListener);
+                break;
+            case DIALOG_TIME_PR_SUB_VERB:
                 adb.setTitle("время");
                 adb.setSingleChoiceItems(data_must_verb_1, -1, myClickListener);
                 break;
