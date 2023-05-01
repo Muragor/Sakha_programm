@@ -70,10 +70,15 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
 
     final int DIALOG_TIME_PR_SUB_VERB = 5;
     final int DIALOG_TIME_CONDITIONAL = 6;
-    String data[] = { "Будущее время", "Прошедшее время", "Настоящее время", "Недавнопрошедшее время","Отрицательное будущее  время", "Отрицательное прошедшее время", "Отрицательное настоящее время", "Отрицательное недавнопрошедшее время", "Настоящее время еще не совершившегося действия"};
-    String data1[] = {"Изъявительное наклонение", "Повелительное наклонение", "Долженствовательное наклонение", "Желательно-сослагательное наклонение", "Условное наклонение"};
-    String data_conditional[] = {"Вневременная форма", "Отрицательная вневременная форма", "Настоящее время", "Отрицательное настоящее время", "Прошедшее время", "Отрицательное прошедшее время"};
-    String data_must_verb_1[] = {"Положительная форма", "Отрицательная форма"};
+    final int DIALOG_TIME_CONDITIONAL_2 = 7;
+    final int DIALOG_TIME_MAYBE = 8;
+    final int DIALOG_TIME_AFFIR = 9;
+    String[] data = { "Будущее время", "Прошедшее время", "Настоящее время", "Недавнопрошедшее время","Отрицательное будущее  время", "Отрицательное прошедшее время", "Отрицательное настоящее время", "Отрицательное недавнопрошедшее время", "Настоящее время еще не совершившегося действия"};
+    String[] data1 = {"Изъявительное наклонение", "Повелительное наклонение", "Долженствовательное наклонение", "Желательно-сослагательное наклонение", "Условное наклонение", "Условно-временное наклонение", "Возможное наклонение", "Утвердительное наклонение"};
+    String[] data_conditional = {"Вневременная форма", "Отрицательная вневременная форма", "Настоящее время", "Отрицательное настоящее время", "Прошедшее время", "Отрицательное прошедшее время"};
+    String[] data_must_verb_1 = {"Положительная форма", "Отрицательная форма"};
+
+    String[] data_affir_verb = {"Положительная форма", "Отрицательная форма I", "Отрицательная форма II"};
     String data2[] = {"Будущее время", "Настоящее время", "Отрицательное будущее время", "Отрицательное настоящее время" };
     int time = 2;
     int mood1 = 0;
@@ -132,7 +137,7 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
     @Override
     public boolean onTouch(View v, MotionEvent event) {
 
-
+        Conditional_verb verb_cond = new Conditional_verb();
         String verb1 = textverb.getText().toString();
         Sakha_verb verb = new Sakha_verb();
         switch (v.getId()) {
@@ -150,7 +155,11 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
                 if (mood1 == 4) {
                     showDialog(DIALOG_TIME_CONDITIONAL);
                 }
+                if (mood1 == 5) { showDialog(DIALOG_TIME_CONDITIONAL_2); }
+                if (mood1 == 6) { showDialog(DIALOG_TIME_MAYBE); }
+                if (mood1 == 7) { showDialog(DIALOG_TIME_AFFIR); }
                 break;
+
             case R.id.Btn_verb:
 
                 if (textverb.getText().toString().equals("")) {
@@ -319,7 +328,7 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
                     }
                 }
                 if (mood1 == 4) {
-                    Conditional_verb verb_cond = new Conditional_verb();
+
                     switch (time) {
                         case 0:
                             text6.setText(verb_cond.not_in_time(verb1, 1, 1, 0));
@@ -338,39 +347,136 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
                             text12.setText(verb_cond.not_in_time(verb1, 2, 3, 1));
                             break;
                         case 2:
-                            text6.setText(verb_cond.real_time_conditional(verb1, 1, 1, 0));
-                            text7.setText(verb_cond.real_time_conditional(verb1, 1, 2, 0));
-                            text8.setText(verb_cond.real_time_conditional(verb1, 1, 3, 0));
-                            text10.setText(verb_cond.real_time_conditional(verb1, 2, 1, 0));
-                            text11.setText(verb_cond.real_time_conditional(verb1, 2, 2, 0));
-                            text12.setText(verb_cond.real_time_conditional(verb1, 2, 3, 0));
+                            text6.setText(verb_cond.real_time_conditional(verb1, 1, 1, 0, 0));
+                            text7.setText(verb_cond.real_time_conditional(verb1, 1, 2, 0, 0));
+                            text8.setText(verb_cond.real_time_conditional(verb1, 1, 3, 0, 0));
+                            text10.setText(verb_cond.real_time_conditional(verb1, 2, 1, 0, 0));
+                            text11.setText(verb_cond.real_time_conditional(verb1, 2, 2, 0, 0));
+                            text12.setText(verb_cond.real_time_conditional(verb1, 2, 3, 0, 0));
                             break;
                         case 3:
-                            text6.setText(verb_cond.real_time_conditional(verb1, 1, 1, 1));
-                            text7.setText(verb_cond.real_time_conditional(verb1, 1, 2, 1));
-                            text8.setText(verb_cond.real_time_conditional(verb1, 1, 3, 1));
-                            text10.setText(verb_cond.real_time_conditional(verb1, 2, 1, 1));
-                            text11.setText(verb_cond.real_time_conditional(verb1, 2, 2, 1));
-                            text12.setText(verb_cond.real_time_conditional(verb1, 2, 3, 1));
+                            text6.setText(verb_cond.real_time_conditional(verb1, 1, 1, 1, 0));
+                            text7.setText(verb_cond.real_time_conditional(verb1, 1, 2, 1, 0));
+                            text8.setText(verb_cond.real_time_conditional(verb1, 1, 3, 1, 0));
+                            text10.setText(verb_cond.real_time_conditional(verb1, 2, 1, 1, 0));
+                            text11.setText(verb_cond.real_time_conditional(verb1, 2, 2, 1, 0));
+                            text12.setText(verb_cond.real_time_conditional(verb1, 2, 3, 1, 0));
                             break;
                         case 4:
-                            text6.setText(verb_cond.past_time_conditional(verb1, 1, 1, 0));
-                            text7.setText(verb_cond.past_time_conditional(verb1, 1, 2, 0));
-                            text8.setText(verb_cond.past_time_conditional(verb1, 1, 3, 0));
-                            text10.setText(verb_cond.past_time_conditional(verb1, 2, 1, 0));
-                            text11.setText(verb_cond.past_time_conditional(verb1, 2, 2, 0));
-                            text12.setText(verb_cond.past_time_conditional(verb1, 2, 3, 0));
+                            text6.setText(verb_cond.past_time_conditional(verb1, 1, 1, 0, 0));
+                            text7.setText(verb_cond.past_time_conditional(verb1, 1, 2, 0, 0));
+                            text8.setText(verb_cond.past_time_conditional(verb1, 1, 3, 0, 0));
+                            text10.setText(verb_cond.past_time_conditional(verb1, 2, 1, 0, 0));
+                            text11.setText(verb_cond.past_time_conditional(verb1, 2, 2, 0, 0));
+                            text12.setText(verb_cond.past_time_conditional(verb1, 2, 3, 0, 0));
                             break;
                         case 5:
-                            text6.setText(verb_cond.past_time_conditional(verb1, 1, 1, 1));
-                            text7.setText(verb_cond.past_time_conditional(verb1, 1, 2, 1));
-                            text8.setText(verb_cond.past_time_conditional(verb1, 1, 3, 1));
-                            text10.setText(verb_cond.past_time_conditional(verb1, 2, 1, 1));
-                            text11.setText(verb_cond.past_time_conditional(verb1, 2, 2, 1));
-                            text12.setText(verb_cond.past_time_conditional(verb1, 2, 3, 1));
+                            text6.setText(verb_cond.past_time_conditional(verb1, 1, 1, 1, 0));
+                            text7.setText(verb_cond.past_time_conditional(verb1, 1, 2, 1, 0));
+                            text8.setText(verb_cond.past_time_conditional(verb1, 1, 3, 1, 0));
+                            text10.setText(verb_cond.past_time_conditional(verb1, 2, 1, 1, 0));
+                            text11.setText(verb_cond.past_time_conditional(verb1, 2, 2, 1, 0));
+                            text12.setText(verb_cond.past_time_conditional(verb1, 2, 3, 1, 0));
                             break;
+                    } }
+                    if (mood1 == 5) {
+                        switch (time) {
+                            case 0:
+                                text6.setText(verb_cond.not_in_time_2(verb1, 1, 1, 0));
+                                text7.setText(verb_cond.not_in_time_2(verb1, 1, 2, 0));
+                                text8.setText(verb_cond.not_in_time_2(verb1, 1, 3, 0));
+                                text10.setText(verb_cond.not_in_time_2(verb1, 2, 1, 0));
+                                text11.setText(verb_cond.not_in_time_2(verb1, 2, 2, 0));
+                                text12.setText(verb_cond.not_in_time_2(verb1, 2, 3, 0));
+                                break;
+                            case 1:
+                                text6.setText(verb_cond.not_in_time_2(verb1, 1, 1, 1));
+                                text7.setText(verb_cond.not_in_time_2(verb1, 1, 2, 1));
+                                text8.setText(verb_cond.not_in_time_2(verb1, 1, 3, 1));
+                                text10.setText(verb_cond.not_in_time_2(verb1, 2, 1, 1));
+                                text11.setText(verb_cond.not_in_time_2(verb1, 2, 2, 1));
+                                text12.setText(verb_cond.not_in_time_2(verb1, 2, 3, 1));
+                                break;
+                            case 2:
+                                text6.setText(verb_cond.real_time_conditional(verb1, 1, 1, 0, 1));
+                                text7.setText(verb_cond.real_time_conditional(verb1, 1, 2, 0, 1));
+                                text8.setText(verb_cond.real_time_conditional(verb1, 1, 3, 0, 1));
+                                text10.setText(verb_cond.real_time_conditional(verb1, 2, 1, 0, 1));
+                                text11.setText(verb_cond.real_time_conditional(verb1, 2, 2, 0, 1));
+                                text12.setText(verb_cond.real_time_conditional(verb1, 2, 3, 0, 1));
+                                break;
+                            case 3:
+                                text6.setText(verb_cond.real_time_conditional(verb1, 1, 1, 1, 1));
+                                text7.setText(verb_cond.real_time_conditional(verb1, 1, 2, 1, 1));
+                                text8.setText(verb_cond.real_time_conditional(verb1, 1, 3, 1, 1));
+                                text10.setText(verb_cond.real_time_conditional(verb1, 2, 1, 1, 1));
+                                text11.setText(verb_cond.real_time_conditional(verb1, 2, 2, 1, 1));
+                                text12.setText(verb_cond.real_time_conditional(verb1, 2, 3, 1, 1));
+                                break;
+                            case 4:
+                                text6.setText(verb_cond.past_time_conditional(verb1, 1, 1, 0, 1));
+                                text7.setText(verb_cond.past_time_conditional(verb1, 1, 2, 0, 1));
+                                text8.setText(verb_cond.past_time_conditional(verb1, 1, 3, 0, 1));
+                                text10.setText(verb_cond.past_time_conditional(verb1, 2, 1, 0, 1));
+                                text11.setText(verb_cond.past_time_conditional(verb1, 2, 2, 0, 1));
+                                text12.setText(verb_cond.past_time_conditional(verb1, 2, 3, 0, 1));
+                                break;
+                            case 5:
+                                text6.setText(verb_cond.past_time_conditional(verb1, 1, 1, 1, 1));
+                                text7.setText(verb_cond.past_time_conditional(verb1, 1, 2, 1, 1));
+                                text8.setText(verb_cond.past_time_conditional(verb1, 1, 3, 1, 1));
+                                text10.setText(verb_cond.past_time_conditional(verb1, 2, 1, 1, 1));
+                                text11.setText(verb_cond.past_time_conditional(verb1, 2, 2, 1, 1));
+                                text12.setText(verb_cond.past_time_conditional(verb1, 2, 3, 1, 1));
+                                break;
                     }
                 }
+                if (mood1 == 6) {
+                    if (time==0) {
+                        text6.setText(verb.maybe_mood(verb1, 1, 1, 0));
+                        text7.setText(verb.maybe_mood(verb1, 1, 2, 0));
+                        text8.setText(verb.maybe_mood(verb1, 1, 3, 0));
+                        text10.setText(verb.maybe_mood(verb1, 2, 1, 0));
+                        text11.setText(verb.maybe_mood(verb1, 2, 2, 0));
+                        text12.setText(verb.maybe_mood(verb1, 2, 3, 0)); }
+                    else {
+                        text6.setText(verb.maybe_mood(verb1, 1, 1, 1));
+                        text7.setText(verb.maybe_mood(verb1, 1, 2, 1));
+                        text8.setText(verb.maybe_mood(verb1, 1, 3, 1));
+                        text10.setText(verb.maybe_mood(verb1, 2, 1, 1));
+                        text11.setText(verb.maybe_mood(verb1, 2, 2, 1));
+                        text12.setText(verb.maybe_mood(verb1, 2, 3, 1));
+                    }
+                }
+                if (mood1 == 7) {
+                    Affirmative_verb affirmative_verb = new Affirmative_verb();
+                    switch (time){
+                        case 0:
+                            text6.setText(affirmative_verb.Aff_verb(verb1, 1, 1));
+                            text7.setText(affirmative_verb.Aff_verb(verb1, 1, 2));
+                            text8.setText(affirmative_verb.Aff_verb(verb1, 1, 3));
+                            text10.setText(affirmative_verb.Aff_verb(verb1, 2, 1));
+                            text11.setText(affirmative_verb.Aff_verb(verb1, 2, 2));
+                            text12.setText(affirmative_verb.Aff_verb(verb1, 2, 3));
+                            break;
+                        case 1:
+                            text6.setText(affirmative_verb.Aff_verb_minus(verb1, 1, 1, 0));
+                            text7.setText(affirmative_verb.Aff_verb_minus(verb1, 1, 2, 0));
+                            text8.setText(affirmative_verb.Aff_verb_minus(verb1, 1, 3, 0));
+                            text10.setText(affirmative_verb.Aff_verb_minus(verb1, 2, 1, 0));
+                            text11.setText(affirmative_verb.Aff_verb_minus(verb1, 2, 2, 0));
+                            text12.setText(affirmative_verb.Aff_verb_minus(verb1, 2, 3, 0));
+                            break;
+
+                        case 2:
+                            text6.setText(affirmative_verb.Aff_verb_minus(verb1, 1, 1, 1));
+                            text7.setText(affirmative_verb.Aff_verb_minus(verb1, 1, 2, 1));
+                            text8.setText(affirmative_verb.Aff_verb_minus(verb1, 1, 3, 1));
+                            text10.setText(affirmative_verb.Aff_verb_minus(verb1, 2, 1, 1));
+                            text11.setText(affirmative_verb.Aff_verb_minus(verb1, 2, 2, 1));
+                            text12.setText(affirmative_verb.Aff_verb_minus(verb1, 2, 3, 1));
+
+                } }
                 Toast.makeText(this, "Просклонено", Toast.LENGTH_SHORT).show();
 
             break;
@@ -423,6 +529,18 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
             case DIALOG_TIME_CONDITIONAL:
                 adb.setTitle("время");
                 adb.setSingleChoiceItems(data_conditional, -1, myClickListener);
+                break;
+            case DIALOG_TIME_CONDITIONAL_2:
+                adb.setTitle("время");
+                adb.setSingleChoiceItems(data_conditional, -1, myClickListener);
+                break;
+            case DIALOG_TIME_MAYBE:
+                adb.setTitle("время");
+                adb.setSingleChoiceItems(data_must_verb_1, -1, myClickListener);
+                break;
+            case DIALOG_TIME_AFFIR:
+                adb.setTitle("время");
+                adb.setSingleChoiceItems(data_affir_verb, -1, myClickListener);
                 break;
         }
 
