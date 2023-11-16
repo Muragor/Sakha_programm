@@ -315,9 +315,92 @@ public class Sakha_verb
             }
         }
     }
+
+    public String past_time_result_1(String v, int a, int b, int c) {
+        if (c==0) return skaz(past_time(v,a, b).substring(0,past_time(v,1, 1).length()-2), a, b);
+        else return skaz(minus_past_time(v,2, 1).substring(0,past_time(v,2, 1).length()-1), a, b);
+    }
+    public String deep_past_1(String v, int a, int b, int c) {
+        v = v.toLowerCase();
+        String g1 = dict2[Garmony(v)];
+        if (c==0) {
+            if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
+                return v+"н";
+            else {
+                v = check_for_irregular_verbs(v);
+                return upod_sogl_of_verb_and_verb_time(v, v+g1+"н");
+            }
+        }
+        else {
+            if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
+            {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+            else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
+            {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
+            if (!check_for_irregular_verbs(v).equals(v)) {
+                v = check_for_irregular_verbs(v)+v.charAt(v.length()-2); }
+            return upod_sogl_of_verb_and_verb_time(v, v+"б"+g1+"кк"+g1);
+        }
+    }
+    public String past_time_result_2(String v, int a, int b, int c) {
+        return deep_past_1(v, a, b ,c) + " " + real_time("тур", a, b);
+    }
+    public String past_time_episodic_1(String v, int a, int b, int c) {
+        if (c==0) {
+        v = past_time(v, 1, 1).substring(0, past_time(v, 1, 1).length()-2); }
+        else {  v = minus_past_time(v, 2, 1).substring(0, minus_past_time(v, 2, 1).length()-3);}
+        String g1 = dict2[Garmony(v)];
+        return skaz(v+"т" + g1 +g1 + "х", a, b);
+    }
+    public String past_time_episodic_2(String v, int a, int b, int c) {
+        v = past_time(v, a, b);
+        if (c==0) return v + " баар";
+        else return v + " суох";
+    }
+
+    public String past_time_episodic_3(String v, int a, int b, int c) {
+        return deep_past_1(v, a, b ,c) + " " + skaz("турардаах", a ,b);
+    }
+
+    public String past_time_not_finished_1(String v, int a, int b, int c) {
+        if (c==0) {
+            if (a==2 && b == 3) return face(real_time(v, 2, 3), 1 , 3 );
+            else return face(real_time(v, 1, 3), a , b );
+        }
+        else return upod_sogl_of_verb_time_and_lic(minus_real_time(v, 1, 3), face(minus_real_time(v, 1, 3), a , b ));
+    }
+    public String past_time_not_finished_2(String v, int a, int b, int c) {
+        if (c==0) return real_time(v, 1, 3) + " " + verb_recent_time("э", a , b);
+        else return minus_real_time(v, 1, 3) + " " + verb_recent_time("э", a , b);
+    }
+    public String past_time_long_ago(String v, int a, int b, int c) {
+        if (c==0) return past_time(v, 1, 1).substring(0, past_time(v, 1, 1).length()-2) + " " + verb_recent_time("э", a , b);
+        else return minus_past_time(v, 2, 1).substring(0, minus_past_time(v, 2, 1).length()-3) + " " + verb_recent_time("э", a , b);
+    }
+
+    public String past_time_long_ago_episodic_1(String v, int a, int b, int c) {
+        return past_time_episodic_1(v, 1, 3, c) + " " + verb_recent_time("э", a , b);
+    }
+    public String past_time_long_ago_episodic_2(String v, int a, int b, int c) {
+        return past_time_episodic_2(v, a, b, c) + " этэ" ;
+    }
+    public String past_time_long_ago_episodic_3(String v, int a, int b, int c) {
+        return past_time_episodic_3(v, 1, 3, c) + " " + verb_recent_time("э", a , b);
+    }
     public String past_time(String v, int a, int b) {
         v = v.toLowerCase();
         int len = v.length();
+        if (v.contains("-")) {
+            int i = 0;
+            String verb1 = "";
+            String verb2;
+            while (v.charAt(i) != '-') {
+                verb1+=v.charAt(i);
+                i++;
+            }
+            verb2 = v.substring(verb1.length()+1);
+            return past_time(verb1, a, b)+"-"+past_time(verb2, a, b);
+        }
+        else {
         if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
         {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
         else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
@@ -335,13 +418,25 @@ public class Sakha_verb
         String v_past = v + "б" + g + "т";
         String v_time = upod_sogl_of_verb_and_verb_time(v, v_past);
         String v_lico = face(v_time, a, b);
-        return upod_sogl_of_verb_time_and_lic(v_time, v_lico);
+        return upod_sogl_of_verb_time_and_lic(v_time, v_lico); }
 
     }
 
     public String minus_past_time(String v, int a, int b) {
         v = v.toLowerCase();
         int len = v.length();
+        if (v.contains("-")) {
+            int i = 0;
+            String verb1 = "";
+            String verb2;
+            while (v.charAt(i) != '-') {
+                verb1+=v.charAt(i);
+                i++;
+            }
+            verb2 = v.substring(verb1.length()+1);
+            return minus_past_time(verb1, a, b)+"-"+minus_past_time(verb2, a, b);
+        }
+        else {
         if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
         {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
         else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
@@ -352,31 +447,43 @@ public class Sakha_verb
         String afficks = "б" + g1 + "т" + g1 + "х";
         v = upod_sogl_of_verb_and_verb_time(v, v+afficks);
         if (a==1) return upod_sogl_of_verb_and_verb_time(v , face(v, a, b));
-        else return upod_sogl_of_verb_time_and_lic(v , face(v, a, b));
+        else return upod_sogl_of_verb_time_and_lic(v , face(v, a, b)); }
     }
     public String real_time(String v, int a, int b) {
         v = v.toLowerCase();
         v = check_for_irregular_verbs(v);
-        int len = v.length();
-        String c1 = dict2[Garmony(v)];
-        String c2 = dict1[Garmony(v)];
-        String v_deep = v+c1;
-        if (This_el(glass_letters, Character.toString(v.charAt(len-1)))) {
-            if (This_el(glass_letters, Character.toString(v.charAt(len-2)))) {
-                v_deep = v.substring(0, len-2) + c2 + c2; }
-            else {
-                v_deep = v.substring(0, len-1) + c2 + c2; }
+        if (v.contains("-")) {
+            int i = 0;
+            String verb1 = "";
+            String verb2;
+            while (v.charAt(i) != '-') {
+                verb1+=v.charAt(i);
+                i++;
+            }
+            verb2 = v.substring(verb1.length()+1);
+            return real_time(verb1, a, b)+"-"+real_time(verb2, a, b);
         }
-        else v_deep = upod_sogl_of_verb_and_verb_time(v, v_deep);
-
+        else {
+        String v_deep = deep_verb(v, a ,b);
         if (a==2 && b == 3) return skaz(v_deep+"л", a, b);
         if (a==1 && b == 3) return v_deep+"р";
-        return skaz(v_deep, a, b);
+        return skaz(v_deep, a, b); }
     }
 
     public String minus_real_time(String v, int a, int b) {
         v = v.toLowerCase();
         int len = v.length();
+        if (v.contains("-")) {
+            int i = 0;
+            String verb1 = "";
+            String verb2;
+            while (v.charAt(i) != '-') {
+                verb1+=v.charAt(i);
+                i++;
+            }
+            verb2 = v.substring(verb1.length()+1);
+            return minus_real_time(verb1, a, b)+"-"+minus_real_time(verb2, a, b);
+        }
         if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
         {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
         else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
@@ -392,6 +499,17 @@ public class Sakha_verb
     public String future_time(String v, int a, int b) {
         v = check_for_irregular_verbs(v);
         int len = v.length();
+        if (v.contains("-")) {
+            int i = 0;
+            String verb1 = "";
+            String verb2;
+            while (v.charAt(i) != '-') {
+                verb1+=v.charAt(i);
+                i++;
+            }
+            verb2 = v.substring(verb1.length()+1);
+            return future_time(verb1, a, b)+"-"+future_time(verb2, a, b);
+        }
         String g1 = dict1[Garmony(v)];
         switch (g1) {
             case "ы":
@@ -429,6 +547,17 @@ public class Sakha_verb
     public String minus_future_time(String v, int a, int b) {
         v = check_for_irregular_verbs(v);
         int len = v.length();
+        if (v.contains("-")) {
+            int i = 0;
+            String verb1 = "";
+            String verb2;
+            while (v.charAt(i) != '-') {
+                verb1+=v.charAt(i);
+                i++;
+            }
+            verb2 = v.substring(verb1.length()+1);
+            return minus_future_time(verb1, a, b).substring(0, minus_future_time(verb1, a, b).length()-6)+"-"+minus_future_time(verb2, a, b);
+        }
         String g1 = dict1[Garmony(v)];
         switch (g1) {
             case "ы":
@@ -463,6 +592,17 @@ public class Sakha_verb
     }
 
     public String verb_recent_time(String v, int a, int b) {
+        if (v.contains("-")) {
+            int i = 0;
+            String verb1 = "";
+            String verb2;
+            while (v.charAt(i) != '-') {
+                verb1+=v.charAt(i);
+                i++;
+            }
+            verb2 = v.substring(verb1.length()+1);
+            return verb_recent_time(verb1, a, b)+"-"+verb_recent_time(verb2, a, b);
+        }
         if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
             v = v;
         else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
@@ -483,6 +623,17 @@ public class Sakha_verb
     public String minus_verb_recent_time(String v, int a, int b) {
         v = v.toLowerCase();
         int len = v.length();
+        if (v.contains("-")) {
+            int i = 0;
+            String verb1 = "";
+            String verb2;
+            while (v.charAt(i) != '-') {
+                verb1+=v.charAt(i);
+                i++;
+            }
+            verb2 = v.substring(verb1.length()+1);
+            return minus_verb_recent_time(verb1, a, b)+"-"+minus_verb_recent_time(verb2, a, b);
+        }
         if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='р')
         {v = check_for_irregular_verbs(v)+dict1[Garmony(v)];}
         else if (v.charAt(v.length()-1)=='т' && v.charAt(v.length()-2)=='л')
@@ -502,7 +653,7 @@ public class Sakha_verb
         return v;
     }
 
-    public String verb_not_finished_time(String v, int a, int b) {
+    public String deep_verb(String v, int a, int b) {
         v = check_for_irregular_verbs(v);
         int len = v.length();
         String c1 = dict2[Garmony(v)];
@@ -515,24 +666,37 @@ public class Sakha_verb
                 v_deep = v.substring(0, len-1) + c2 + c2; }
         }
         else v_deep = upod_sogl_of_verb_and_verb_time(v, v_deep);
-        if (a==1) {
-            switch (b) {
-                case 1: return v_deep + " иликпин";
-                case 2: return v_deep + " иликкин";
-                case 3: return v_deep + " илик";
+        return v_deep;
+    }
+    public String verb_not_finished_time(String v, int a, int b) {
+        v = check_for_irregular_verbs(v);
+        int len = v.length();
+        if (v.contains("-")) {
+            int i = 0;
+            String verb1 = "";
+            String verb2;
+            while (v.charAt(i) != '-') {
+                verb1+=v.charAt(i);
+                i++;
             }
+            verb2 = v.substring(verb1.length()+1);
+            return deep_verb(verb1, a ,b)+"-"+ deep_verb(verb2, a ,b) +skaz(" илик", a, b);
         }
-        else {
-            switch (b) {
-                case 1: return v_deep + " иликпит";
-                case 2: return v_deep + " иликкит";
-                case 3: return v_deep + " иликтэр";
-            }
-        }
-        return "Непредвиденная ошибка";
+        return deep_verb(v, a ,b)+skaz(" илик", a, b);
     }
 
     public String imperative_mood(String v, int t, int a, int b, int c) {
+        if (v.contains("-")) {
+            int i = 0;
+            String verb1 = "";
+            String verb2;
+            while (v.charAt(i) != '-') {
+                verb1+=v.charAt(i);
+                i++;
+            }
+            verb2 = v.substring(verb1.length()+1);
+            return imperative_mood(verb1, t, a, b, c)+"-"+imperative_mood(verb2,t, a, b, c);
+        }
         String c1 = dict2[Garmony(v)];
         String c2 = dict1[Garmony(v)];
         switch (t) {
@@ -546,11 +710,13 @@ public class Sakha_verb
                             if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                 return upod_sogl_of_verb_and_verb_time(v, v+'р');
                             else
+                                v = check_for_irregular_verbs(v);
                                 return upod_sogl_of_verb_and_verb_time(v, v+c1+c1+"р"); }
                             else {
                                 if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                     return v+'м'+c1+c1+'р';
                                 else
+                                    v = check_for_irregular_verbs(v);
                                     return upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]+dict2[Garmony_of_sl(c2, 1)]+"р");
                             }
                         case 3:
@@ -560,7 +726,9 @@ public class Sakha_verb
                             else {
                                 if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                     v = v+"м"+c1+c1;
-                                else v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]+dict2[Garmony_of_sl(c2, 1)]);
+                                else {
+                                    v = check_for_irregular_verbs(v);
+                                    v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]+dict2[Garmony_of_sl(c2, 1)]); }
                                 String v1 = future_time(v, 2, 1);
                                 return v1.substring(0, v1.length()-3)+"т"+c2+"н"; }
 
@@ -586,17 +754,22 @@ public class Sakha_verb
                             if (c==1) {
                                 if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                     v = v+"м"+c1+c1;
-                                else v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+c1+c1);
+                                else {
+                                    v = check_for_irregular_verbs(v);
+                                    v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+c1+c1); }
                             }
                             if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                 return v.substring(0, v.length()-2)+c2+c2+'м';
-                            else
-                                return upod_sogl_of_verb_and_verb_time(v,  v+c2+c2+'м');
+                            else {
+                                v = check_for_irregular_verbs(v);
+                                return upod_sogl_of_verb_and_verb_time(v,  v+c2+c2+'м'); }
                         case 2:
                             if (c==1) {
                             if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1)))) {
                             return v+"м"+c1; }
-                            return v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]); }
+                            else {
+                                v = check_for_irregular_verbs(v);
+                                return v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]); } }
                             else return v;
                         case 3:
                             if (c==1) v = minus_real_time(v, 1, 3).substring(0,minus_real_time(v, 1, 3).length()-1 );
@@ -610,19 +783,24 @@ public class Sakha_verb
                             if (c==1) {
                                 if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                     v = v+"м"+c1+c1;
-                                else v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]+dict2[Garmony_of_sl(c2, 1)]);
+                                else {
+                                    v = check_for_irregular_verbs(v);
+                                    v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]+dict2[Garmony_of_sl(c2, 1)]); }
                             }
                             return future_time(v, 1, 2);
                         case 2:
                             if (c==1) {
                                 if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                     v = v+"м"+c1;
-                                else v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]);
+                                else {
+                                    v = check_for_irregular_verbs(v);
+                                    v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]); }
                             }
                             if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                 return upod_sogl_of_verb_and_verb_time(v, v+'ҥ');
-                            else
-                                return upod_sogl_of_verb_and_verb_time(v, v+c2+"ҥ");
+                            else {
+                                v = check_for_irregular_verbs(v);
+                                return upod_sogl_of_verb_and_verb_time(v, v+c2+"ҥ"); }
                         case 3:
                             return imperative_mood(v, t, 1, 3, c) + "н" +dict2[Garmony_of_sl(c2, 1)] + "р";
                         default: return "Отсутствует";
@@ -632,6 +810,17 @@ public class Sakha_verb
         }
     }
     public String maybe_mood(String verb, int a, int b, int c) {
+        if (verb.contains("-")) {
+            int i = 0;
+            String verb1 = "";
+            String verb2;
+            while (verb.charAt(i) != '-') {
+                verb1+=verb.charAt(i);
+                i++;
+            }
+            verb2 = verb.substring(verb1.length()+1);
+            return maybe_mood(verb1, a, b, c)+"-"+maybe_mood(verb2, a, b, c);
+        }
         String g1 = dict2[Garmony(verb)];
         String g2 = dict1[Garmony_of_sl(g1, 1)];
         String g3 = dict2[Garmony_of_sl(g2, 1)];
@@ -640,6 +829,7 @@ public class Sakha_verb
                 verb = verb + "й";
             }
             else {
+                verb = check_for_irregular_verbs(verb);
                 verb = upod_sogl_of_verb_and_verb_time(verb, verb + g1+ g1 + "й");
             }
         }
