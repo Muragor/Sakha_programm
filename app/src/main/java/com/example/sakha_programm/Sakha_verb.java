@@ -240,6 +240,9 @@ public class Sakha_verb
         else if (!upod_sogl_sl(v, 'н', v_time, 'т', "н").equals("?")) {
             return upod_sogl_sl(v, 'н', v_time, 'т', "н");
         }
+        else if (!upod_sogl_sl(v, 'ҥ', v_time, 'т', "н").equals("?")) {
+            return upod_sogl_sl(v, 'ҥ', v_time, 'т', "н");
+        }
 
         //гласные с согалсными
         char c2 = c3.charAt(0);
@@ -304,6 +307,32 @@ public class Sakha_verb
             else return v_time_lico;
         }
         else return v_time_lico;
+    }
+    public String skaz(String w, int a, int b){
+        String g1 = dict1[Garmony(w)];
+        String g2 = dict2[Garmony(w)];
+        if (a==1) {
+            switch (b) {
+                case 1:
+                    return upod_sogl_of_verb_and_verb_time(w, w+"б"+g1+"н");
+                case 2:
+                    return upod_sogl_of_verb_time_and_lic(w, w+"ҕ"+g1+"н");
+                default:
+                    return w;
+            }
+        }
+        else {
+            switch (b) {
+                case 1:
+                    return upod_sogl_of_verb_and_verb_time(w, w+"б"+g1+"т");
+                case 2:
+                    return upod_sogl_of_verb_time_and_lic(w, w+"ҕ"+g1+"т");
+                default:
+                    if (This_el(glass_letters, Character.toString(w.charAt(w.length()-1))))
+                        return w+"л"+g2+"р";
+                    else return upod_sogl_of_verb_and_verb_time(w, w+"т"+g2+"р");
+            }
+        }
     }
     public String past_time(String v, int a, int b) {
         v = v.toLowerCase();
@@ -406,23 +435,10 @@ public class Sakha_verb
                 v_deep = v.substring(0, len-1) + c2 + c2; }
         }
         else v_deep = upod_sogl_of_verb_and_verb_time(v, v_deep);
-        String c3 = dict1[Garmony(v_deep)];
-        String c4 = dict2[Garmony(v_deep)];
-        if (a==1) {
-            if (b == 1) return v_deep+"б"+c3+"н";
-            if (b == 2) {
-                if (!upod_sogl_of_verb_time_and_lic(v_deep, v_deep + "ҕ" + c3 + "н").equals(v_deep + "ҕ" + c3 + "н"))
-                    return upod_sogl_of_verb_time_and_lic(v_deep, v_deep + "ҕ" + c3 + "н");
-                else return v_deep + "ҕ" + c3 + "н";
-            }
-            else return v_deep+"р";
-        }
-        else {
-            if (b==1) return face(v_deep, a, b);
-            if (b==2) return upod_sogl_of_verb_time_and_lic(v_deep, face(v_deep, a, b));
-            else return v_deep + "лл" + dict2[Garmony_of_sl(Character.toString(v_deep.charAt(v_deep.length()-1)), 1)]+ "р";
-        }
 
+        if (a==2 && b == 3) return skaz(v_deep+"л", a, b);
+        if (a==1 && b == 3) return v_deep+"р";
+        return skaz(v_deep, a, b);
     }
 
     public String minus_real_time(String v, int a, int b) {
@@ -438,16 +454,7 @@ public class Sakha_verb
         String c2 = dict1[Garmony_of_sl(c1, 1)];
         String afficks = "б" + c1 + "т";
         v = upod_sogl_of_verb_and_verb_time(v, v + afficks);
-        if (a==1) {
-            if (b == 1) return upod_sogl_of_verb_time_and_lic(v, v+"б"+c2+"н");
-            if (b == 2) return upod_sogl_of_verb_time_and_lic(v, v+"ҕ"+c2+"н");
-            else return v;
-        }
-        else {
-            if (b==1) return upod_sogl_of_verb_time_and_lic(v, face(v, a, b));
-            if (b==2) return upod_sogl_of_verb_time_and_lic(v, face(v, a, b));
-            else return v + "т" + c1 + "р";
-        }
+        return skaz(v, a, b);
     }
     public String future_time(String v, int a, int b) {
         v = check_for_irregular_verbs(v);
@@ -620,7 +627,7 @@ public class Sakha_verb
                             else {
                                 if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                     v = v+"м"+c1+c1;
-                                else v = v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]+dict2[Garmony_of_sl(c2, 1)];
+                                else v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]+dict2[Garmony_of_sl(c2, 1)]);
                                 String v1 = future_time(v, 2, 1);
                                 return v1.substring(0, v1.length()-3)+"т"+c2+"н"; }
 
@@ -646,7 +653,7 @@ public class Sakha_verb
                             if (c==1) {
                                 if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                     v = v+"м"+c1+c1;
-                                else v = v+c2+'м'+c1+c1;
+                                else v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+c1+c1);
                             }
                             if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                 return v.substring(0, v.length()-2)+c2+c2+'м';
@@ -656,7 +663,7 @@ public class Sakha_verb
                             if (c==1) {
                             if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1)))) {
                             return v+"м"+c1; }
-                            return v = v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]; }
+                            return v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]); }
                             else return v;
                         case 3:
                             if (c==1) v = minus_real_time(v, 1, 3).substring(0,minus_real_time(v, 1, 3).length()-1 );
@@ -670,14 +677,14 @@ public class Sakha_verb
                             if (c==1) {
                                 if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                     v = v+"м"+c1+c1;
-                                else v = v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]+dict2[Garmony_of_sl(c2, 1)];
+                                else v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]+dict2[Garmony_of_sl(c2, 1)]);
                             }
                             return future_time(v, 1, 2);
                         case 2:
                             if (c==1) {
                                 if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                     v = v+"м"+c1;
-                                else v = v+c2+'м'+dict2[Garmony_of_sl(c2, 1)];
+                                else v = upod_sogl_of_verb_and_verb_time(v, v+c2+'м'+dict2[Garmony_of_sl(c2, 1)]);
                             }
                             if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                 return upod_sogl_of_verb_and_verb_time(v, v+'ҥ');
@@ -690,6 +697,23 @@ public class Sakha_verb
                 }
             default: return "Отсутствует";
         }
+    }
+    public String maybe_mood(String verb, int a, int b, int c) {
+        String g1 = dict2[Garmony(verb)];
+        String g2 = dict1[Garmony_of_sl(g1, 1)];
+        String g3 = dict2[Garmony_of_sl(g2, 1)];
+        if (c==0) {
+            if (This_el(glass_letters, Character.toString(verb.charAt(verb.length()-1)))) {
+                verb = verb + "й";
+            }
+            else {
+                verb = upod_sogl_of_verb_and_verb_time(verb, verb + g1+ g1 + "й");
+            }
+        }
+        else { verb = imperative_mood(verb, 2, 1, 2, 1) + g3 + "й"; }
+        if (b==3 && a==1) return verb.substring(0, verb.length()-1) + "р" + g3 + "й";
+        else
+            return real_time(verb, a ,b);
     }
     public String verb_finally(String v, int t, int a, int b) {
         switch (t) {

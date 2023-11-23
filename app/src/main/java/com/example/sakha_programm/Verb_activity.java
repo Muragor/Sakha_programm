@@ -3,13 +3,9 @@ package com.example.sakha_programm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
-import android.content.pm.ActivityInfo;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -29,12 +25,10 @@ import android.widget.Toast;
 public class Verb_activity extends AppCompatActivity implements View.OnTouchListener {
 
     int wrapContent = LinearLayout.LayoutParams.WRAP_CONTENT;
-
     final String LOG_TAG = "myLogs";
     ImageView btn_start;
     ImageView btn_verb;
 
-    SharedPreferences sPref;
     ImageView rect1;
     ImageView rect2;
     ImageView rect3;
@@ -64,7 +58,6 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
     TextView text12;
     EditText textverb;
 
-
     ImageView imagebkb1;
     ImageView imagebkb2;
     ImageView imagebkb3;
@@ -79,183 +72,6 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
     String data2[] = {"Будущее время", "Настоящее время", "Отрицательное будущее время", "Отрицательное настоящее время" };
     int time = 2;
     int mood1 = 0;
-    final String SAVED_TEXT1 = "saved_text1";
-    final String SAVED_TEXT2 = "saved_text2";
-    final String SAVED_TEXT3 = "saved_text3";
-    final String SAVED_TEXT4 = "saved_text4";
-    final String SAVED_TEXT5 = "saved_text5";
-    final String SAVED_TEXT6 = "saved_text6";
-    int flag1;
-    private int getScreenOrientation(){
-        if(getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT)
-            return 1;
-        else if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_LANDSCAPE)
-            return 2;
-        else
-            return 0;
-    }
-    private void setVerbText(){
-        String verb1 = textverb.getText().toString();
-        Sakha_verb verb = new Sakha_verb();
-        text1.setText("Лицо");
-        text2.setText("1 лицо");
-        text3.setText("2 лицо");
-        text4.setText("3 лицо");
-        text5.setText("Единственное число");
-        text9.setText("Множественное число");
-        tx3 = (TextView) findViewById(R.id.text1);
-
-
-        if (mood1 == 0)
-        {
-            switch (time)
-            {
-                case 0:
-                    tx3.setText("Будущее время");
-                    text6.setText(verb.verb_finally(verb1, 1, 1, 1));
-                    text7.setText(verb.verb_finally(verb1, 1, 1, 2));
-                    text8.setText(verb.verb_finally(verb1, 1, 1, 3));
-                    text10.setText(verb.verb_finally(verb1, 1, 2, 1));
-                    text11.setText(verb.verb_finally(verb1, 1, 2, 2));
-                    text12.setText(verb.verb_finally(verb1, 1, 2, 3));
-                    break;
-                case 1:
-                    tx3.setText("Прошедшее время");
-                    text6.setText(verb.verb_finally(verb1, 3, 1, 1));
-                    text7.setText(verb.verb_finally(verb1, 3, 1, 2));
-                    text8.setText(verb.verb_finally(verb1, 3, 1, 3));
-                    text10.setText(verb.verb_finally(verb1, 3, 2, 1));
-                    text11.setText(verb.verb_finally(verb1, 3, 2, 2));
-                    text12.setText(verb.verb_finally(verb1, 3, 2, 3));
-                    break;
-                case 2:
-                    tx3.setText("Настоящее время");
-                    text6.setText(verb.verb_finally(verb1, 2, 1, 1));
-                    text7.setText(verb.verb_finally(verb1, 2, 1, 2));
-                    text8.setText(verb.verb_finally(verb1, 2, 1, 3));
-                    text10.setText(verb.verb_finally(verb1, 2, 2, 1));
-                    text11.setText(verb.verb_finally(verb1, 2, 2, 2));
-                    text12.setText(verb.verb_finally(verb1, 2, 2, 3));
-                    break;
-                case 3:
-                    tx3.setText("Недавнопрошедшее время");
-                    text6.setText(verb.verb_finally(verb1, 7, 1, 1));
-                    text7.setText(verb.verb_finally(verb1, 7, 1, 2));
-                    text8.setText(verb.verb_finally(verb1, 7, 1, 3));
-                    text10.setText(verb.verb_finally(verb1, 7, 2, 1));
-                    text11.setText(verb.verb_finally(verb1, 7, 2, 2));
-                    text12.setText(verb.verb_finally(verb1, 7, 2, 3));
-                    break;
-                case 4:
-                    tx3.setText("Отрицательное будущее  время");
-                    text6.setText(verb.verb_finally(verb1, 4, 1, 1));
-                    text7.setText(verb.verb_finally(verb1, 4, 1, 2));
-                    text8.setText(verb.verb_finally(verb1, 4, 1, 3));
-                    text10.setText(verb.verb_finally(verb1, 4, 2, 1));
-                    text11.setText(verb.verb_finally(verb1, 4, 2, 2));
-                    text12.setText(verb.verb_finally(verb1, 4, 2, 3));
-                    break;
-                case 5:
-                    tx3.setText("Отрицательное прошедшее время");
-                    text6.setText(verb.verb_finally(verb1, 6, 1, 1));
-                    text7.setText(verb.verb_finally(verb1, 6, 1, 2));
-                    text8.setText(verb.verb_finally(verb1, 6, 1, 3));
-                    text10.setText(verb.verb_finally(verb1, 6, 2, 1));
-                    text11.setText(verb.verb_finally(verb1, 6, 2, 2));
-                    text12.setText(verb.verb_finally(verb1, 6, 2, 3));
-                    break;
-                case 6:
-                    tx3.setText("Отрицательное настоящее время");
-                    text6.setText(verb.verb_finally(verb1, 5, 1, 1));
-                    text7.setText(verb.verb_finally(verb1, 5, 1, 2));
-                    text8.setText(verb.verb_finally(verb1, 5, 1, 3));
-                    text10.setText(verb.verb_finally(verb1, 5, 2, 1));
-                    text11.setText(verb.verb_finally(verb1, 5, 2, 2));
-                    text12.setText(verb.verb_finally(verb1, 5, 2, 3));
-                    break;
-                case 7:
-                    tx3.setText("Отрицательное недавнопрошедшее время");
-                    text6.setText(verb.verb_finally(verb1, 8, 1, 1));
-                    text7.setText(verb.verb_finally(verb1, 8, 1, 2));
-                    text8.setText(verb.verb_finally(verb1, 8, 1, 3));
-                    text10.setText(verb.verb_finally(verb1, 8, 2, 1));
-                    text11.setText(verb.verb_finally(verb1, 8, 2, 2));
-                    text12.setText(verb.verb_finally(verb1, 8, 2, 3));
-                    break;
-                case 8:
-                    tx3.setText("Настоящее время еще не совершившегося действия");
-                    text6.setText(verb.verb_finally(verb1, 9, 1, 1));
-                    text7.setText(verb.verb_finally(verb1, 9, 1, 2));
-                    text8.setText(verb.verb_finally(verb1, 9, 1, 3));
-                    text10.setText(verb.verb_finally(verb1, 9, 2, 1));
-                    text11.setText(verb.verb_finally(verb1, 9, 2, 2));
-                    text12.setText(verb.verb_finally(verb1, 9, 2, 3));
-                    break; } }
-        if (mood1 == 1)   {
-            if (time < 2) {
-                text6.setText(verb.imperative_mood(verb1, time+1, 1, 1, 0));
-                text7.setText(verb.imperative_mood(verb1, time+1, 1, 2, 0));
-                text8.setText(verb.imperative_mood(verb1, time+1, 1, 3, 0));
-                text10.setText(verb.imperative_mood(verb1, time+1, 2, 1, 0));
-                text11.setText(verb.imperative_mood(verb1, time+1, 2, 2, 0));
-                text12.setText(verb.imperative_mood(verb1, time+1, 2, 3, 0));
-                if (time+1==1) tx3.setText("Будущее время повелительного наклонения");
-                else tx3.setText("Настоящее время повелительного наклонения"); }
-            else {
-                text6.setText(verb.imperative_mood(verb1, time-1, 1, 1, 1));
-                text7.setText(verb.imperative_mood(verb1, time-1, 1, 2, 1));
-                text8.setText(verb.imperative_mood(verb1, time-1, 1, 3, 1));
-                text10.setText(verb.imperative_mood(verb1, time-1, 2, 1, 1));
-                text11.setText(verb.imperative_mood(verb1, time-1, 2, 2, 1));
-                text12.setText(verb.imperative_mood(verb1, time-1, 2, 3, 1));
-                if (time-2==0) tx3.setText("Отрицательное будущее время повелительного наклонения");
-                else tx3.setText("Отрицательное настоящее время повелительного наклонения"); }
-        }
-    }
-    @Override
-    public void onWindowFocusChanged(boolean hasFocus) {
-        super.onWindowFocusChanged(hasFocus);
-
-        if(hasFocus) {
-            if (getScreenOrientation()==2) {
-                rect1.setImageResource(R.drawable.rectangle_9);
-                rect2.setImageResource(R.drawable.rectangle_10);
-                rect3.setImageResource(R.drawable.rectangle_10);
-                rect4.setImageResource(R.drawable.rectangle_12);
-                rect5.setImageResource(R.drawable.rectangle_13_1);
-                rect6.setImageResource(R.drawable.rectangle_17_1);
-                rect7.setImageResource(R.drawable.rectangle_17_1);
-                rect8.setImageResource(R.drawable.rectangle_15_1); //Данный квадрат был 16-ю, но название поменлось на 15_1. Так что, это удлиненная врсрия 16-ого квадрата!
-                rect9.setImageResource(R.drawable.rectangle_18_1);
-                rect10.setImageResource(R.drawable.rectangle_20_1);
-                rect11.setImageResource(R.drawable.rectangle_20_1);
-                rect12.setImageResource(R.drawable.rectangle_21_1);
-                sPref = getPreferences(MODE_PRIVATE);
-                String savedText1 = sPref.getString(SAVED_TEXT1, "");
-                String savedText2 = sPref.getString(SAVED_TEXT2, "");
-                String savedText3 = sPref.getString(SAVED_TEXT3, "");
-                String savedText4 = sPref.getString(SAVED_TEXT4, "");
-                String savedText5 = sPref.getString(SAVED_TEXT5, "");
-                String savedText6 = sPref.getString(SAVED_TEXT6, "");
-
-                text6.setText(savedText1);
-                text7.setText(savedText2);
-                text8.setText(savedText3);
-                text10.setText(savedText4);
-                text11.setText(savedText5);
-                text12.setText(savedText6);
-                text1.setText("Лицо");
-                text2.setText("1 лицо");
-                text3.setText("2 лицо");
-                text4.setText("3 лицо");
-                text5.setText("Единственное число");
-                text9.setText("Множественное число");
-
-            }
-
-        }
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -263,7 +79,6 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
 
         btn_verb = (ImageView) findViewById(R.id.Btn_verb);
         btn_start = (ImageView) findViewById(R.id.rectangle_5);
-
 
         rect1 = (ImageView) findViewById(R.id.imageView);
         rect2 = (ImageView) findViewById(R.id.imageView2);
@@ -307,15 +122,12 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
         btn_start.setOnTouchListener(this);
         btn_verb.setOnTouchListener(this);
         mood.setOnTouchListener(this);
-
-
-
 }
-
-
 
     @Override
     public boolean onTouch(View v, MotionEvent event) {
+
+
         String verb1 = textverb.getText().toString();
         Sakha_verb verb = new Sakha_verb();
         switch (v.getId()) {
@@ -326,12 +138,10 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
                     showDialog(DIALOG_TIME_1); }
                 break;
             case R.id.Btn_verb:
-                flag1 = 6;
 
                 if (textverb.getText().toString().equals("")) {
                     Toast.makeText(this, "Напишите ваш глагол", Toast.LENGTH_SHORT).show();
                     return false; }
-                if (getScreenOrientation()==1) {
                 rect1.setImageResource(R.drawable.rectangle_9);
                 rect2.setImageResource(R.drawable.rectangle_10);
                 rect3.setImageResource(R.drawable.rectangle_11);
@@ -343,32 +153,122 @@ public class Verb_activity extends AppCompatActivity implements View.OnTouchList
                 rect9.setImageResource(R.drawable.rectangle_18);
                 rect10.setImageResource(R.drawable.rectangle_20);
                 rect11.setImageResource(R.drawable.rectangle_20);
-                rect12.setImageResource(R.drawable.rectangle_21); }
-                else {
-                    rect1.setImageResource(R.drawable.rectangle_9);
-                    rect2.setImageResource(R.drawable.rectangle_10);
-                    rect3.setImageResource(R.drawable.rectangle_10);
-                    rect4.setImageResource(R.drawable.rectangle_12);
-                    rect5.setImageResource(R.drawable.rectangle_13_1);
-                    rect6.setImageResource(R.drawable.rectangle_17_1);
-                    rect7.setImageResource(R.drawable.rectangle_17_1);
-                    rect8.setImageResource(R.drawable.rectangle_15_1); //Данный квадрат был 16-ю, но название поменлось на 15_1. Так что, это удлиненная врсрия 16-ого квадрата!
-                    rect9.setImageResource(R.drawable.rectangle_18_1);
-                    rect10.setImageResource(R.drawable.rectangle_20_1);
-                    rect11.setImageResource(R.drawable.rectangle_20_1);
-                    rect12.setImageResource(R.drawable.rectangle_21_1);
-                }
-                setVerbText();
-                sPref = getPreferences(MODE_PRIVATE);
-                SharedPreferences.Editor ed = sPref.edit();
-                ed.putString(SAVED_TEXT1, text6.getText().toString());
-                ed.putString(SAVED_TEXT2, text7.getText().toString());
-                ed.putString(SAVED_TEXT3, text8.getText().toString());
-                ed.putString(SAVED_TEXT4, text10.getText().toString());
-                ed.putString(SAVED_TEXT5, text11.getText().toString());
-                ed.putString(SAVED_TEXT6, text12.getText().toString());
-                ed.commit();
-                Toast.makeText(this, "Просклонено " + flag1, Toast.LENGTH_SHORT).show();
+                rect12.setImageResource(R.drawable.rectangle_21);
+                text1.setText("Лицо");
+                text2.setText("1 лицо");
+                text3.setText("2 лицо");
+                text4.setText("3 лицо");
+                text5.setText("Единственное число");
+                text9.setText("Множественное число");
+                tx3 = (TextView) findViewById(R.id.text1);
+
+
+                if (mood1 == 0)
+                {
+                    switch (time)
+                    {
+                    case 0:
+                        tx3.setText("Будущее время");
+                        text6.setText(verb.verb_finally(verb1, 1, 1, 1));
+                        text7.setText(verb.verb_finally(verb1, 1, 1, 2));
+                        text8.setText(verb.verb_finally(verb1, 1, 1, 3));
+                        text10.setText(verb.verb_finally(verb1, 1, 2, 1));
+                        text11.setText(verb.verb_finally(verb1, 1, 2, 2));
+                        text12.setText(verb.verb_finally(verb1, 1, 2, 3));
+                        break;
+                    case 1:
+                        tx3.setText("Прошедшее время");
+                        text6.setText(verb.verb_finally(verb1, 3, 1, 1));
+                        text7.setText(verb.verb_finally(verb1, 3, 1, 2));
+                        text8.setText(verb.verb_finally(verb1, 3, 1, 3));
+                        text10.setText(verb.verb_finally(verb1, 3, 2, 1));
+                        text11.setText(verb.verb_finally(verb1, 3, 2, 2));
+                        text12.setText(verb.verb_finally(verb1, 3, 2, 3));
+                        break;
+                    case 2:
+                        tx3.setText("Настоящее время");
+                        text6.setText(verb.verb_finally(verb1, 2, 1, 1));
+                        text7.setText(verb.verb_finally(verb1, 2, 1, 2));
+                        text8.setText(verb.verb_finally(verb1, 2, 1, 3));
+                        text10.setText(verb.verb_finally(verb1, 2, 2, 1));
+                        text11.setText(verb.verb_finally(verb1, 2, 2, 2));
+                        text12.setText(verb.verb_finally(verb1, 2, 2, 3));
+                        break;
+                    case 3:
+                        tx3.setText("Недавнопрошедшее время");
+                        text6.setText(verb.verb_finally(verb1, 7, 1, 1));
+                        text7.setText(verb.verb_finally(verb1, 7, 1, 2));
+                        text8.setText(verb.verb_finally(verb1, 7, 1, 3));
+                        text10.setText(verb.verb_finally(verb1, 7, 2, 1));
+                        text11.setText(verb.verb_finally(verb1, 7, 2, 2));
+                        text12.setText(verb.verb_finally(verb1, 7, 2, 3));
+                        break;
+                    case 4:
+                        tx3.setText("Отрицательное будущее  время");
+                        text6.setText(verb.verb_finally(verb1, 4, 1, 1));
+                        text7.setText(verb.verb_finally(verb1, 4, 1, 2));
+                        text8.setText(verb.verb_finally(verb1, 4, 1, 3));
+                        text10.setText(verb.verb_finally(verb1, 4, 2, 1));
+                        text11.setText(verb.verb_finally(verb1, 4, 2, 2));
+                        text12.setText(verb.verb_finally(verb1, 4, 2, 3));
+                        break;
+                    case 5:
+                        tx3.setText("Отрицательное прошедшее время");
+                        text6.setText(verb.verb_finally(verb1, 6, 1, 1));
+                        text7.setText(verb.verb_finally(verb1, 6, 1, 2));
+                        text8.setText(verb.verb_finally(verb1, 6, 1, 3));
+                        text10.setText(verb.verb_finally(verb1, 6, 2, 1));
+                        text11.setText(verb.verb_finally(verb1, 6, 2, 2));
+                        text12.setText(verb.verb_finally(verb1, 6, 2, 3));
+                        break;
+                    case 6:
+                        tx3.setText("Отрицательное настоящее время");
+                        text6.setText(verb.verb_finally(verb1, 5, 1, 1));
+                        text7.setText(verb.verb_finally(verb1, 5, 1, 2));
+                        text8.setText(verb.verb_finally(verb1, 5, 1, 3));
+                        text10.setText(verb.verb_finally(verb1, 5, 2, 1));
+                        text11.setText(verb.verb_finally(verb1, 5, 2, 2));
+                        text12.setText(verb.verb_finally(verb1, 5, 2, 3));
+                        break;
+                    case 7:
+                        tx3.setText("Отрицательное недавнопрошедшее время");
+                        text6.setText(verb.verb_finally(verb1, 8, 1, 1));
+                        text7.setText(verb.verb_finally(verb1, 8, 1, 2));
+                        text8.setText(verb.verb_finally(verb1, 8, 1, 3));
+                        text10.setText(verb.verb_finally(verb1, 8, 2, 1));
+                        text11.setText(verb.verb_finally(verb1, 8, 2, 2));
+                        text12.setText(verb.verb_finally(verb1, 8, 2, 3));
+                        break;
+                    case 8:
+                        tx3.setText("Настоящее время еще не совершившегося действия");
+                        text6.setText(verb.verb_finally(verb1, 9, 1, 1));
+                        text7.setText(verb.verb_finally(verb1, 9, 1, 2));
+                        text8.setText(verb.verb_finally(verb1, 9, 1, 3));
+                        text10.setText(verb.verb_finally(verb1, 9, 2, 1));
+                        text11.setText(verb.verb_finally(verb1, 9, 2, 2));
+                        text12.setText(verb.verb_finally(verb1, 9, 2, 3));
+                        break; } }
+                if (mood1 == 1)   {
+                    if (time < 2) {
+                    text6.setText(verb.imperative_mood(verb1, time+1, 1, 1, 0));
+                    text7.setText(verb.imperative_mood(verb1, time+1, 1, 2, 0));
+                    text8.setText(verb.imperative_mood(verb1, time+1, 1, 3, 0));
+                    text10.setText(verb.imperative_mood(verb1, time+1, 2, 1, 0));
+                    text11.setText(verb.imperative_mood(verb1, time+1, 2, 2, 0));
+                    text12.setText(verb.imperative_mood(verb1, time+1, 2, 3, 0));
+                    if (time+1==1) tx3.setText("Будущее время повелительного наклонения");
+                    else tx3.setText("Настоящее время повелительного наклонения"); }
+                    else {
+                        text6.setText(verb.imperative_mood(verb1, time-1, 1, 1, 1));
+                        text7.setText(verb.imperative_mood(verb1, time-1, 1, 2, 1));
+                        text8.setText(verb.imperative_mood(verb1, time-1, 1, 3, 1));
+                        text10.setText(verb.imperative_mood(verb1, time-1, 2, 1, 1));
+                        text11.setText(verb.imperative_mood(verb1, time-1, 2, 2, 1));
+                        text12.setText(verb.imperative_mood(verb1, time-1, 2, 3, 1));
+                        if (time-2==0) tx3.setText("Отрицательное будущее время повелительного наклонения");
+                        else tx3.setText("Отрицательное настоящее время повелительного наклонения"); }
+                    }
+                Toast.makeText(this, "Просклонено", Toast.LENGTH_SHORT).show();
 
             break;
             case R.id.mood:
