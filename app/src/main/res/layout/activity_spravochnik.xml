@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SpravochnikActivity">
+
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/some_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:fontFamily="@font/kadwa"
+                android:gravity="top"
+                android:text="Справочник"
+                android:textAppearance="@style/some_id"
+                android:textSize="24dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+            <TextView
+                android:id="@+id/textView18"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:text="Наклонения:
+Изъявительное - глагол в этом наклонении выражает реальное действие, которое произойдёт, происходит, или уже произошло. Пример: Кини аhыа - он поест; кини аhыыр - он ест; кини аhаата - он поел.
+" />
+
+            <TextView
+                android:id="@+id/textView19"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:text="Повелительное - глагол в этом наклонении выражает волеизъявление. Пример: бар - иди; барыҥ - идите." />
+
+            <TextView
+                android:id="@+id/textView20"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:text="Долженствовательное - глагол в этом наклонении выражает действие, которое должно произойти. Пример: мин барыахтаахпын - я должен пойти." />
+
+            <TextView
+                android:id="@+id/textView21"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:text="Желательно-сослагательное - глагол в это наклонении выражает субъективное допущение от говорящего лица возможности или же не возможности действия, мыслимого обычно в возможном прошлом или в возможном будущем. Пример: Мин барыам этэ - я бы пошел; Кини кэлиэ этэ - он бы пришёл." />
+
+            <TextView
+                android:id="@+id/textView22"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Перевод слов:"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+            <TextView
+                android:id="@+id/textView23"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Мин - я"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+            <TextView
+                android:id="@+id/textView232"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Эн - ты"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+            <TextView
+                android:id="@+id/textView24"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Кини - он"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+            <TextView
+                android:id="@+id/textView25"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Биhиги - мы"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+            <TextView
+                android:id="@+id/textView26"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Эhиги - вы"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+            <TextView
+                android:id="@+id/textView27"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Кинилэр - они"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"/>
+
+            <TextView
+                android:id="@+id/textView29"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                android:text="Падежи:" />
+            <TextView
+                android:id="@+id/textView31"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Именительный падеж отвечает на вопросы кто? что? (Ким? туох?)"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView30" />
+
+            <TextView
+                android:id="@+id/textView32"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Винительный падеж отвечают на вопросы «Кого?», «Что?» (кими? тугу?)"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView31" />
+
+            <TextView
+                android:id="@+id/textView36"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Дательный падеж отвечает на вопросы кому? чему? (кимиэхэ? туохха?)"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView33" />
+
+            <TextView
+                android:id="@+id/textView37"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+                android:text="Исходный падеж означает исходный пункт движения, действия и отвечает на вопрос  Откуда? От кого? От чего? (хантан? кимтэн? туохтан?)."
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView36" />
+
+            <TextView
+                android:id="@+id/textView38"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+
+
+                android:text="Творительный падеж отвечает на вопросы кем? чем? (киминэн? тугунан?)"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView37" />
+
+            <TextView
+                android:id="@+id/textView39"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Сравнительный падеж -  форма имени, являющегося объектом сравнения. Пример: Медведь сильнее волка - эһэ (медведь) бөрөтөөҕөр (чем волк) күүстээх (сильнее)"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView40" />
+
+            <TextView
+                android:id="@+id/textView40"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Совместный падеж отвечает на вопросы с кем? с чем? (кимниин? туохтуун?)"
+                android:fontFamily="@font/kadwa"
+                android:textColor="@color/black"
+                android:textSize="16dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textView38" />
+        </LinearLayout>
+    </ScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

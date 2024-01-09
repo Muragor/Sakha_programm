@@ -7,130 +7,74 @@
     android:background="@color/white"
     tools:context=".MainActivity">
 
-    <ImageView
-        android:id="@+id/rectangle_4"
-        android:layout_width="298dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rectangle_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rectangle_3" />
-
-    <ImageView
-        android:id="@+id/rectangle_10"
-        android:layout_width="298dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rectangle_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rectangle_4" />
-
     <TextView
         android:id="@+id/some_id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:fontFamily="@font/kadwa"
         android:gravity="top"
         android:text="Чинчий"
-        android:fontFamily="@font/sansationregular"
         android:textAppearance="@style/some_id"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:textSize="24dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.042" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/rectangle_2"
-        android:layout_width="298dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="36dp"
-        android:background="@drawable/rectangle_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        android:id="@+id/imageView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView16"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/some_id" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView20"
+        app:srcCompat="@drawable/group_2" />
 
     <ImageView
-        android:id="@+id/rectangle_3"
-        android:layout_width="298dp"
-        android:layout_height="47dp"
-        android:layout_marginTop="32dp"
-        android:background="@drawable/rectangle_2"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rectangle_2" />
-
-    <TextView
-        android:id="@+id/textView7"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:gravity="top"
-        android:text="Склонение глаголов"
-        android:fontFamily="@font/sansationregular"
-        android:textAppearance="@style/some_id"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_2"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_2"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_2"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_2"
-        app:layout_constraintVertical_bias="0.518" />
-
-    <TextView
+        android:id="@+id/imageView16"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:gravity="top"
-        android:text="Склонение существительных"
-        android:fontFamily="@font/sansationregular"
-        android:textAppearance="@style/some_id"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_3"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_3"
-        app:layout_constraintHorizontal_bias="0.506"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_3"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_3"
-        app:layout_constraintVertical_bias="0.48" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="24dp"
-        android:fontFamily="@font/sansationregular"
-        android:gravity="top"
-        android:text="Словообразование"
-        android:textAppearance="@style/some_id"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_4"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_4"
-        app:layout_constraintHorizontal_bias="0.503"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_4"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_4"
-        app:layout_constraintVertical_bias="0.565" />
-
-    <View
-        android:id="@+id/image_lzdxo"
-        android:layout_width="252dp"
-        android:layout_height="243dp"
-        android:background="@drawable/image_lzdxo"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="52dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.85" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView20"
+        app:srcCompat="@drawable/group_4" />
 
-    <TextView
-        android:id="@+id/textView29"
+    <ImageView
+        android:id="@+id/imageView17"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Информация и термины"
-        android:textColor="@color/black"
-        android:fontFamily="@font/sansationregular"
-        android:textSize="16sp"
-        app:layout_constraintBottom_toBottomOf="@+id/rectangle_10"
-        app:layout_constraintEnd_toEndOf="@+id/rectangle_10"
-        app:layout_constraintStart_toStartOf="@+id/rectangle_10"
-        app:layout_constraintTop_toTopOf="@+id/rectangle_10" />
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
+        app:layout_constraintEnd_toStartOf="@+id/imageView18"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView14"
+        app:srcCompat="@drawable/group_8__1_" />
+
+    <ImageView
+        android:id="@+id/imageView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:layout_marginEnd="52dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView16"
+        app:srcCompat="@drawable/group_9" />
+
+    <ImageView
+        android:id="@+id/imageView20"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/some_id"
+        app:srcCompat="@drawable/group_57" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

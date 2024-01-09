@@ -709,9 +709,9 @@ public class Sakha_verb
                             if (c==0) {
                             if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                 return upod_sogl_of_verb_and_verb_time(v, v+'р');
-                            else
+                            else {
                                 v = check_for_irregular_verbs(v);
-                                return upod_sogl_of_verb_and_verb_time(v, v+c1+c1+"р"); }
+                                return upod_sogl_of_verb_and_verb_time(v, v+c1+c1+"р"); } }
                             else {
                                 if (This_el(glass_letters, Character.toString(v.charAt(v.length()-1))))
                                     return v+'м'+c1+c1+'р';
